@@ -1,0 +1,3 @@
+describe CurrentDayService do
+  
+end
