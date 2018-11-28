@@ -4,6 +4,7 @@ require 'json'
 class FiveDayService
   include HTTParty
 
-  base_uri ''
-
+  def get_five_day_data
+    
+  end
 end
