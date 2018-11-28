@@ -16,7 +16,16 @@ class CurrentDayService
     @current_weather
   end
 
-end
+  def key_value
+    @current_weather['sys']['type']
+  end
 
-new = CurrentDayService.new
-puts new.test
+  def country_string
+    @current_weather['sys']['country']
+  end
+
+  def sys_id_float
+    @current_weather['sys']['id']
+  end
+
+end
