@@ -1,19 +1,14 @@
-
-
 describe FiveDayService do
 
   attr_accessor :api_key
 
   before(:all) do
-    @latitude = 45
-    @longitude = 20
     @api_key = ENV['OPENWEATHERMAP_API_KEY']
-    @five_day_forecast = JSON.parse(HTTParty::get("https://api.openweathermap.org/data/2.5/forecast?lat=#{@latitude}&lon=#{@longitude}&APPID=#{@api_key}").body)
+    @five_day_service = OpenWeather.new.five_day_service
+    @five_day_forecast = @five_day_service.get_five_day_data(@api_key)
   end
 
-
   it "should be a hash" do
-    puts @five_day_forecast
     expect(@five_day_forecast).to be_kind_of Hash
   end
 end

@@ -1,6 +1,6 @@
 require 'rspec'
-require_relative '../lib/open_weather'
 require 'dotenv'
+require_relative '../lib/open_weather'
 
 Dotenv.load('.env')
 
