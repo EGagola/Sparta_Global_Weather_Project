@@ -73,8 +73,4 @@ describe CurrentDayService do
     expect(@current_day_service.get_float_visibility).to be_kind_of String
     pending
   end
-  it 'should return float as visibility'do
-    expect(@current_day_service.get_float_visibility).to be_kind_of String
-    pending
-  end
 end

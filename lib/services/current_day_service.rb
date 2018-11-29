@@ -16,11 +16,11 @@ class CurrentDayService
     @current_weather
   end
 
-  def longitude_value
+  def get_latitude_float
     @current_weather['coord']['lon']
   end
 
-  def latitude_value
+  def get_longitude_float
     @current_weather['coord']['lat']
   end
 
@@ -51,7 +51,6 @@ class CurrentDayService
   def main_key_value
     @current_weather['main'].keys.length
   end
-
 end
 
 new = CurrentDayService.new
