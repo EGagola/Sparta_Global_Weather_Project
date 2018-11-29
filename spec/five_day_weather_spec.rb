@@ -134,4 +134,22 @@ describe FiveDayService do
 
     end
 
+    context "testing rain inside list" do
+      it 'should return as a hash' do
+        expect(@five_day_service.search_list_for(2,'rain')).to be_kind_of(Hash)
+      end
+
+      it 'should return key as string if rain it is not empty' do
+        if (@five_day_service.search_list_for(30,'rain') != {})
+          expect(@five_day_service.search_list_for(30, 'rain').keys[0]).to be_kind_of(String)
+        end
+      end
+
+      it 'should return value as a float greater than zero if rain it is not empty' do
+        if (@five_day_service.search_list_for(30,'rain') != {})
+          expect(@five_day_service.search_list_for(30, 'rain')["3h"]).to be_kind_of(Float)
+          expect(@five_day_service.search_list_for(30, 'rain')["3h"]).to be >= 0
+        end
+      end
+    end
 end
