@@ -15,7 +15,6 @@ class CurrentDayService
     JSON.parse(self.class.get("/data/2.5/group?id=#{cityID}&APPID=a210fbef76875d625711834647e06f34").body)
   end
 
-
   def get_result
     @current_weather
   end
@@ -57,6 +56,7 @@ class CurrentDayService
 
   def get_longitude
     @current_weather['coord']['lon']
+    puts @current_weather
   end
 
   def get_latitude
@@ -92,4 +92,5 @@ class CurrentDayService
   end
 end
 
-puts new = CurrentDayService.new
+check = CurrentDayService.new
+check.get_longitude
