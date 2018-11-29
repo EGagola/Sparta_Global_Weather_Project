@@ -1,5 +1,6 @@
 require 'httparty'
 require 'json'
+require_relative '../generators/id_generator'
  
 class SingleCurrentDayService
   include HTTParty
@@ -7,7 +8,8 @@ class SingleCurrentDayService
   # base_uri 'api.openweathermap.org'
  
   def initialize
-    get_single_weather_id("2332453")
+    @cityid = CityIdGenerator.new
+    @get_single_weather_id(@cityid.id_data)
     @single_weather_data = {}
   end
  
