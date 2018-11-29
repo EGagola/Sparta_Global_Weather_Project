@@ -19,6 +19,10 @@ describe CurrentDayCoordinateService do
       expect(@current_day_service.search_outer('cod')).to eq 200
     end
 
+    it "should have a dt int value" do
+      expect(@current_day_service.search_outer('dt')).to be_kind_of Integer
+    end
+
   end
 
   context "testing wind" do
