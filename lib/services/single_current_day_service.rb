@@ -19,36 +19,36 @@ class CurrentDayService
     @current_weather
   end
 
-  def get_base
-    @current_weather['base']
-  end
-
-  def get_main
-    @current_weather['main'].length
-  end
-
-  def get_visibility
-    @current_weather['visibility']
-  end
-
-  def get_wind_speed
-    @current_weather['wind']['speed']
-  end
-
-  def get_wind_deg
-    @current_weather['wind']['deg']
-  end
-
-  def key_value
-    @current_weather['sys']['type']
-  end
-
-  def country_string
-    @current_weather['sys']['country']
-    # test id for id it should retun integer
-    #name should have type sting
-    #code should return an integer
-  end
+  # def get_base
+  #   @current_weather['base']
+  # end
+  #
+  # def get_main
+  #   @current_weather['main'].length
+  # end
+  #
+  # def get_visibility
+  #   @current_weather['visibility']
+  # end
+  #
+  # def get_wind_speed
+  #   @current_weather['wind']['speed']
+  # end
+  #
+  # def get_wind_deg
+  #   @current_weather['wind']['deg']
+  # end
+  #
+  # def key_value
+  #   @current_weather['sys']['type']
+  # end
+  #
+  # def country_string
+  #   @current_weather['sys']['country']
+  #   # test id for id it should retun integer
+  #   #name should have type sting
+  #   #code should return an integer
+  # end
 
   def sys_id_float
     @current_weather['sys']['id']
