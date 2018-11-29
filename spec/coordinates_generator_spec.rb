@@ -8,11 +8,11 @@ describe 'CoordsGenerator' do
     @length = @coord.get_json_length
   end
 
-  it "should return a longitude value of a float" do
+  it "should return a longitude value of a float or an integer" do
     expect(@longitude).to be_kind_of(Float).or be_kind_of(Integer)
   end
 
-  it "should return a latitude value of a float" do
+  it "should return a latitude value of a float or an integer" do
     expect(@latitude).to be_kind_of(Float).or be_kind_of(Integer)
   end
 

@@ -7,7 +7,6 @@ class CurrentDayCoordinateService
   include HTTParty
 
   def initialize
-    # placeholders for the generator functions
     @json_file = ParseJSON.new
     random_val = @json_file.generate_random_number
     @latitude = @json_file.get_coord(random_val,'lat')
