@@ -1,24 +1,23 @@
 require 'httparty'
 require 'json'
 
-class SingleCurrentDayService
+class CurrentDayService
   include HTTParty
 
   # base_uri 'api.openweathermap.org'
 
   def initialize
-    get_single_weather_id("2332453")
-    @single_weather_data = {}
+    @single_weather_data = get_single_weather_id("2332453")
   end
 
   def get_single_weather_id(cityID)
-    @single_weather_data = JSON.parse(self.class.get("https://api.openweathermap.org/data/2.5/group?id=#{cityID}&APPID=#{@api_key}").body)
+    JSON.parse(self.class.get("https://api.openweathermap.org/data/2.5/group?id=#{cityID}&APPID=#{@api_key}").body)
   end
 
-  def get_test
+  def get_result
     @single_weather_data
   end
- 
+
   def get_base_value
     @single_weather_data['base']
   end
@@ -55,7 +54,7 @@ class SingleCurrentDayService
   end
 
   def get_longitude_value
-    @single_weather_data['coord']['lon']
+    @single_weather_data['list'][0]['coord']['lon']
   end
 
   def get_latitude_value
@@ -90,6 +89,3 @@ class SingleCurrentDayService
     @single_weather_data['main'].keys.length
   end
 end
-
-m = SingleCurrentDayService.new
-puts m.get_test
