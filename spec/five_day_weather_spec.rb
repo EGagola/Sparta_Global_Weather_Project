@@ -27,4 +27,30 @@ describe FiveDayService do
   it "should have a list length that is equal to the count set" do
     expect(@five_day_service.search_outer('list').length).to eq(@five_day_service.search_outer('cnt'))
   end
+
+  it "should contain a weather array" do
+    expect(@five_day_service.search_list_for(30,'weather')).to be_kind_of Array
+  end
+
+  it "should contain 1 element in the weather array" do
+    expect(@five_day_service.search_list_for(13,'weather').length).to eq 1
+  end
+
+  it "should have an integer id value in the weather array that is greater than 0" do
+    expect(@five_day_service.search_weather_for(20,'id')).to be_kind_of Integer
+    expect(@five_day_service.search_weather_for(20,'id')).to be > 0
+  end
+
+  it "should have a string value for main in the weather array that is less than 256 characters" do
+    expect(@five_day_service.search_weather_for(9,'main')).to be_kind_of String
+    expect(@five_day_service.search_weather_for(9,'main').length).to be < 256
+  end
+
+  it "should have a string value for the description" do
+    expect(@five_day_service.search_weather_for(6,'description')).to be_kind_of String
+  end
+
+  it "should have a string value for the icon" do
+    expect(@five_day_service.search_weather_for(16,'icon')).to be_kind_of String
+  end
 end
