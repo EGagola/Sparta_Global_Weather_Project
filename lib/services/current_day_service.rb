@@ -15,7 +15,6 @@ class CurrentDayService
     @current_weather
   end
 
-
   def get_base
     @current_weather['base']
   end
@@ -34,6 +33,26 @@ class CurrentDayService
 
   def get_wind_deg
     @current_weather['wind']['deg']
+
+  def key_value
+    @current_weather['sys']['type']
+  end
+
+  def country_string
+    @current_weather['sys']['country']
+    # test id for id it should retun integer
+    #name should have type sting
+    #code should return an integer
+  end
+
+  def sys_id_float
+    @current_weather['sys']['id']
+  end
+
+  def method_name
+
+  end
+
 
   def longitude_value
     @current_weather['coord']['lon']
@@ -71,6 +90,3 @@ class CurrentDayService
     @current_weather['main'].keys.length
   end
 end
-
-new = CurrentDayService.new
-puts new.main_key_value
