@@ -7,5 +7,4 @@ class CoordsGenerator
   def generate_longitude
     lat = rand(-180.0...180.0).round(1)
   end
-
 end

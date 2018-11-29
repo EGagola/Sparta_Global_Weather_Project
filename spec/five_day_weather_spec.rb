@@ -113,7 +113,39 @@ describe FiveDayService do
       expect(@five_day_service.search_list_input_for(27, 'main', 'temp_kf')).to be_kind_of(Integer)
     end
 
-  end
+    it "should have a wind data in a hash" do
+      expect(@five_day_service.search_list_for(3, 'wind')).to be_kind_of Hash
+    end
+    it "should have a wind hash of length 2" do
+      expect(@five_day_service.search_list_for(13, 'wind').length).to eq 2
+    end
+    it "should have a wind speed as a float" do
+      expect(@five_day_service.search_list_input_for(13, "wind", "speed")).to be_kind_of Float
+    end
+    it "should have a wind degree as a float " do
+      expect(@five_day_service.search_list_input_for(13, "wind", "speed")).to be_kind_of Float
+    end
 
+    it "should have a wind degree between 0 and 360" do
+      expect(@five_day_service.search_list_input_for(13, "wind", "deg")).to be_between(0,360).inclusive
+    end
+
+    it "delta time should be an Integer" do
+      expect(@five_day_service.search_list_for(23, 'dt')).to be_kind_of Integer
+    end
+
+    it "should have data within a 5 day timescale" do
+      expect(@five_day_service.search_list_for(39, 'dt') - 421200).to eq (@five_day_service.search_list_for(0, 'dt'))
+    end
+    it "should have delta time text in the correct format" do
+      #bonus
+    end
+
+    it "should have delta time equal to delta time text" do
+      #split into array and test each array
+    end
+    it "should have test intervals of three hours" do
+      expect(@five_day_service.search_list_for(1, 'dt') - 10800).to eq (@five_day_service.search_list_for(0, 'dt'))
+    end
 end
->>>>>>> TEAM_2
+end
