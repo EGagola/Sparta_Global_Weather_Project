@@ -175,7 +175,7 @@ describe FiveDayService do
     end
 
     it "should have delta time text in the correct format" do
-      expect(@five_day_service.dt_txt_formatter(@five_day_service)).to eq 4
+      expect(@five_day_service.dt_txt_format_checker(@five_day_service)).to eq 4
       #expecting 4 true values
     end
 
