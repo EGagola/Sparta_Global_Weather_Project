@@ -11,66 +11,54 @@ describe OpenWeather do
     @current_day = CurrentDayService.new
   end
 
-
   it 'should have a result Hash' do
     expect(@single_weather_service.get_result).to be_kind_of(Hash)
    end
 
   it 'check id to be length 7'do
     expect(@single_weather_service.get_id.length).to eq 7
-    pending
   end
 
   it 'should check Latitude is a float' do
-    expect(@single_weather_service.get_latitude_value).to be_kind_of Float
-    pending
+    expect(@single_weather_service.get_latitude_value).to be_kind_of(Float)
   end
 
   it 'should check that Longitude is a float' do
-    expect(@single_weather_service.get_longitude_value).to be_kind_of Float
+    expect(@single_weather_service.get_longitude_value).to be_kind_of(Float)
   end
 
   it 'should return an Integer for Weather Id' do
-    expect(@single_weather_service.get_id).to be_kind_of Numeric
-    pending
+    expect(@single_weather_service.get_id).to be_kind_of(Numeric)
   end
 
   it 'should Weather Id of 3 integer' do
     expect(@single_weather_service.get_id.length).to eq 3
-    pending
   end
 
   it 'the weather should have 4 keys'do
     expect(@single_weather_service.get_weather_has_4_keys).to eq 4
-    pending
   end
 
   it 'should return string weather condition between 3-20'do
     expect(@single_weather_service.get_weather_has_4_keys.length).to be_between(3,20).inclusive
-    pending
   end
 
   it 'should be a string in Description'do
-    expect(@single_weather_service.get_description).to be_kind_of String
-    pending
+    expect(@single_weather_service.get_description).to be_kind_of(String)
   end
   it 'should have icon in weather to be a string'do
-    expect(@single_weather_service.get_weather).to be_kind_of String
-    pending
+    expect(@single_weather_service.get_weather).to be_kind_of(String)
   end
   it 'should have the base as a string'do
-    expect(@single_weather_service.get_base).to be_kind_of String
-    pending
+    expect(@single_weather_service.get_base).to be_kind_of(String)
   end
 
   it "should return weather base strings between 8-15" do
     expect(@single_weather_service.get_weather).to be_between(8,15).inclusive
-    pending
   end
 
   it "should return hash for main" do
     expect(@single_weather_service.get_result_hash).to be_kind_of Hash
-    pending
   end
 
   it "should return temperature of float" do
@@ -131,40 +119,30 @@ describe OpenWeather do
 
   it 'should check sys has id as a float 'do
     expect(@single_weather_service.get_system_id).to be_kind_of Float
-    pending
   end
 
   it 'should check system has 6 keys'do
     expect(@single_weather_service.sys_has_6_keys).to eq 6
-    pending
   end
   it 'clouds all return integer'do
     expect(@single_weather_service.get_clouds).to be_kind_of Integer
-    pending
   end
   it 'check all keys return string'do
     expect(@single_weather_service.get_keys_return).to be_kind_of String
-    pending
   end
   it 'base should have stations as a string'do
     expect(@single_weather_service.get_base_station).to be_kind_of String
-    pending
   end
   it 'should return float as visibility'do
     expect(@single_weather_service.get_visibility).to be_kind_of String
-    pending
   end
   it 'should check longitute to be between -90 to 90'do
     expect(@single_weather_service.get_between_longitude).to be_between(-90,90).inclusive
-    pending
   end
   it 'should check latitude to be between -180 to 180'do
     expect(@csingle_weather_service.get_between_latitude).to be_between(-180,180).inclusive
-    pending
   end
   it 'check humidity should be between 30 to 50 percent'do
     expect(@single_weather_service.get_humidity).to be_between(30,50).inclusive
-    pending
   end
-
 end
