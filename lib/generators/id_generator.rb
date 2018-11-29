@@ -11,8 +11,9 @@ class CityIdGenerator
   end
 
   def weather
-    JSON.parse(self.class.get("/data/2.5/weather?id=2172797&appid=b6907d289e10d714a6e88b30761fae22").body)
+    JSON.parse(self.class.get("/data/2.5/weather?id=2172797&APPID=a210fbef76875d625711834647e06f34").body)
   end
+
 
 
 end
