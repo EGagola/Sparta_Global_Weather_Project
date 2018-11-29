@@ -48,6 +48,7 @@ class FiveDayService
       false
     end
   end
+
   def dt_txt_format_checker(instance)
     true_values = 0
     #true_values represents how many test cases are true and therefore correct.
