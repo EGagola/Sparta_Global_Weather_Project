@@ -1,4 +1,5 @@
 require 'rspec'
+require 'httparty'
 require 'dotenv'
 require_relative '../lib/open_weather'
 
