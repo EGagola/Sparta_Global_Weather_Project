@@ -10,14 +10,19 @@ Following this, please create a file named '.env' in the main project directory.
 
 Then simply run 'rspec' to run the test.
 
-## Current Day services
+## Current Day Service
 
 
 
 
 
-## Five Day services
+## Five Day Service
 
+This portion checks the results from calling the Open Weather API for a 5 day forecast, in three hour increments. It will provide a new, randomly generated set of coordinates to the API each time the test is run. These coordinates are generated in the coordinates_generator.rb file.
+
+### The coordinates generator
+
+This file is used in the test to generate random coordinates through a set of two methods: generate_latitude and generate_longitude, respectively. This generator is tested in turn through the coordinates_generator_spec file. Specifically, it must generate floats that are valid coordinates.
 
 
 
