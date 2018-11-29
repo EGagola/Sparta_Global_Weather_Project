@@ -40,5 +40,9 @@ The search_weather_for method works this same as list, but for the weather hash.
 
 The search_list_input_for method drills down one level further into the list hash. It takes three arguments in the following order: integer, desired hash key, and the key to search for. It otherwise functions the same as above.
 
+### The Tests
+
+Currently testing every feature of the hash returned from the API, to varying extents.
+
 
 ## Sixteen Day Service
