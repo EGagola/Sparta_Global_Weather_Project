@@ -5,13 +5,14 @@ class FiveDayService
   include HTTParty
 
   def initialize
+    # placeholders for the generator functions
     @latitude = 35
     @longitude = 139
     @five_day_forecast = 0
   end
 
   def get_five_day_data(api_key)
-    @five_day_forecast = JSON.parse(self.class.get("http://api.openweathermap.org/data/2.5/forecast?lat=#{@latitude}&lon=#{@longitude}&APPID=#{api_key}").body)
+    @five_day_forecast = JSON.parse(self.class.get("https://api.openweathermap.org/data/2.5/forecast?lat=#{@latitude}&lon=#{@longitude}&APPID=#{api_key}").body)
   end
 
   def search_outer(search_word)
