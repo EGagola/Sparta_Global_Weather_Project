@@ -131,18 +131,18 @@ describe FiveDayService do
     end
   end
 
-    context "testing clouds inside list" do
+ context "testing clouds inside list" do
 
-      it "should have a clouds hash of length 1 in list" do
-        expect(@five_day_service.search_list_for(12,'clouds')).to be_kind_of Hash
-        expect(@five_day_service.search_list_for(12,'clouds').length).to eq 1
-      end
-
-      it "should have an integer value for all in clouds that is between 0 and 100" do
-        expect(@five_day_service.search_list_input_for(38,'clouds','all')).to be_kind_of Integer
-        expect(@five_day_service.search_list_input_for(38,'clouds','all')).to be_between(0,100).inclusive
-      end
-
+   it "should have a clouds hash of length 1 in list" do
+      expect(@five_day_service.search_list_for(12,'clouds')).to be_kind_of Hash
+      expect(@five_day_service.search_list_for(12,'clouds').length).to eq 1
     end
+
+    it "should have an integer value for all in clouds that is between 0 and 100" do
+      expect(@five_day_service.search_list_input_for(38,'clouds','all')).to be_kind_of Integer
+      expect(@five_day_service.search_list_input_for(38,'clouds','all')).to be_between(0,100).inclusive
+    end
+
+  end
 
 end
