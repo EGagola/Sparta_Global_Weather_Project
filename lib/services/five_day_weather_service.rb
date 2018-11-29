@@ -3,6 +3,7 @@ require 'json'
 require 'date'
 require_relative '../generators/coordinates_generator'
 
+
 class FiveDayService
   include HTTParty
 
