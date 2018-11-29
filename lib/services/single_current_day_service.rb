@@ -1,17 +1,17 @@
 require 'httparty'
 require 'json'
+require_relative '../generators/id_generator'
 
 class CurrentDayService
   include HTTParty
 
-  # base_uri 'api.openweathermap.org'
-
   def initialize
-    @single_weather_data = get_single_weather_id("2332453")
+    @cityid = CityIdGenerator.new.single_generator
+    @single_weather_data = 0
   end
 
-  def get_single_weather_id(cityID)
-    JSON.parse(self.class.get("https://api.openweathermap.org/data/2.5/group?id=#{cityID}&APPID=#{@api_key}").body)
+  def get_single_weather_id(api_key)
+    @single_weather_data = JSON.parse(self.class.get("https://api.openweathermap.org/data/2.5/group?id=2332453&APPID=#{api_key}").body)
   end
 
   def get_result
@@ -53,14 +53,8 @@ class CurrentDayService
     @single_weather_data['sys']['id']
   end
 
-<<<<<<< HEAD
-  def get_longitude
-    @current_weather['coord']['lon']
-    puts @current_weather
-=======
   def get_longitude_value
     @single_weather_data['list'][0]['coord']['lon']
->>>>>>> e6532f404380d2fd11bb2c0d0abe8bf898238df6
   end
 
   def get_latitude_value
@@ -95,6 +89,3 @@ class CurrentDayService
     @single_weather_data['main'].keys.length
   end
 end
-
-check = CurrentDayService.new
-check.get_longitude
