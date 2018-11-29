@@ -1,3 +1,0 @@
-describe FiveDayService do
-
-end
