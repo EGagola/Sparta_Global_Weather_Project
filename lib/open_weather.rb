@@ -1,6 +1,6 @@
 require_relative 'services/current_day_service'
 require_relative 'services/five_day_weather_service'
-require_relative 'services/sixteen_day_weather_service'
+require_relative 'services/current_day_coordinate_service'
 
 class OpenWeather
 
@@ -12,7 +12,7 @@ class OpenWeather
     FiveDayService.new
   end
 
-  def sixteen_day_service
-    SixteenDayService.new
+  def current_day_service
+    CurrentDayCoordinateService.new
   end
 end
