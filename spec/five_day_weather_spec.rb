@@ -180,7 +180,7 @@ describe FiveDayService do
     end
 
     it "should have delta time equal to the delta time text" do
-      expect(@five_day_service.delta_text_check(@five_day_service)).to eq true
+      expect(@five_day_service.delta_text_checker(@five_day_service)).to eq true
     end
 
     it "should have test intervals of three hours" do
