@@ -70,7 +70,6 @@ class CurrentDayService
   def main_key_value
     @current_weather['main'].keys.length
   end
-
 end
 
 new = CurrentDayService.new
