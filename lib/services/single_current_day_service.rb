@@ -11,7 +11,7 @@ class CurrentDayService
   end
 
   def get_single_weather_id(api_key)
-    @single_weather_data = JSON.parse(self.class.get("https://api.openweathermap.org/data/2.5/group?id=2332453&APPID=#{api_key}").body)
+    @single_weather_data = JSON.parse(self.class.get("https://api.openweathermap.org/data/2.5/group?id=#{@cityid}&APPID=#{api_key}").body)
   end
 
   def get_result
@@ -44,9 +44,6 @@ class CurrentDayService
 
   def get_country_value
     @single_weather_data['sys']['country']
-    # test id for id it should retun integer
-    #name should have type sting
-    #code should return an integer
   end
 
   def get_sys_id_value
@@ -89,7 +86,3 @@ class CurrentDayService
     @single_weather_data['main'].keys.length
   end
 end
-
-# puts new = CityIdGenerator.new.single_generator
-# new1 = CurrentDayService.new
-# puts new1.get_single_weather_id(@cityid)

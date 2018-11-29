@@ -5,7 +5,7 @@ describe OpenWeather do
   attr_accessor :api_key
 
   before(:all) do
-    @api_key = 
+    @api_key = ENV['OPENWEATHER_API_KEY']
     @single_weather_service = OpenWeather.new.single_weather_service
     @single_weather_service.get_single_weather_id(@api_key)
     @current_day = CurrentDayService.new
@@ -13,9 +13,9 @@ describe OpenWeather do
 
 
   it 'should have a result Hash'do
-    # expect(@single_weather_service.get_result).to be_kind_of Hash
-    puts @single_weather_service.get_result
+    expect(@single_weather_service.get_result).to be_kind_of(Hash)
   end
+
   it 'should check that Longitude is a float' do
     expect(@single_weather_service.get_longitude_value).to be_kind_of Float
   end
