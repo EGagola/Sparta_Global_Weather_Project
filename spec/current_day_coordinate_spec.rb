@@ -29,6 +29,10 @@ describe CurrentDayCoordinateService do
       expect(@current_day_service.search_outer('id')).to be > 0
     end
 
+    it "should have a string value for name" do
+      expect(@current_day_service.search_outer('name')).to be_kind_of String
+    end
+
   end
 
   context "testing wind" do
