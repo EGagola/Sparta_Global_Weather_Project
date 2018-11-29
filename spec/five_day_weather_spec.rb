@@ -1,3 +1,4 @@
+
 describe FiveDayService do
 
   attr_accessor :api_key
