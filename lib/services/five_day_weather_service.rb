@@ -4,7 +4,6 @@ require 'json'
 class FiveDayService
   include HTTParty
 
-
   def initialize
     # placeholders for the generator functions
     @latitude = 35
