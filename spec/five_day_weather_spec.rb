@@ -39,7 +39,7 @@ describe FiveDayService do
 
     it "should contain 1 Hash element in the weather array" do
       expect(@five_day_service.search_list_for(13,'weather').length).to eq 1
-      expect(@five_day_service.search_list_for(30,'weather')[0].class).to be_kind_of Hash
+      expect(@five_day_service.search_list_for(30,'weather')[0]).to be_kind_of Hash
     end
 
     it "should have an integer id value in the weather array that is greater than 0" do
