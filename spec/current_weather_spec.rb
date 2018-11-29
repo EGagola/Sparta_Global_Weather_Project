@@ -1,3 +1,3 @@
-# describe CurrentDayService do
-#
-# end
+describe CurrentDayService do
+  
+end

@@ -1,3 +1,3 @@
-# describe FiveDayService do
-#
-# end
+describe FiveDayService do
+
+end
