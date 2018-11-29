@@ -1,9 +1,7 @@
 describe SingleCurrentDayService do
 
   before(:all) do
-    @api_key = ENV['FIXER_API_KEY']
-    @single_weather_service = ParseJson.new(HTTParty::get("api.openweathermap.org/data/2.5/group?id=#{@api_key}").body)
-
+    @api_key = ENV['OPENWEATHER_API_KEY']
     @single_weather_service = OpenWeather.new.single_weather_service
     @single_weather_service.get_single_weather_id('2332453')
   end

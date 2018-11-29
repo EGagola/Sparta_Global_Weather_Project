@@ -4,14 +4,15 @@ require 'json'
 class SingleCurrentDayService
   include HTTParty
 
-  base_uri 'api.openweathermap.org'
+  # base_uri 'api.openweathermap.org'
 
   def initialize
     get_single_weather_id("2332453")
+    @single_weather_data = {}
   end
 
   def get_single_weather_id(cityID)
-    @single_weather_data = JSON.parse(self.class.get("/data/2.5/group?id=#{cityID}&APPID=a210fbef76875d625711834647e06f34").body)
+    @single_weather_data = JSON.parse(self.class.get("https://api.openweathermap.org/data/2.5/group?id=#{cityID}&APPID=#{@api_key}").body)
   end
 
   def get_test
