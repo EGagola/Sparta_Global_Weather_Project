@@ -1,22 +1,20 @@
 describe OpenWeather do
 
-  before(:each) do
+  before(:all) do
     @single_raw_weather_service = CurrentDayService.new
     @single_raw_weather_service.weather('2332453')
-    @single_weather_service = @single_raw_weather_service.get_result
   end
 
   it 'should have a result Hash'do
-    expect(@single_weather_service).to be_kind_of Hash
-
+    # expect(@single_weather_service.get_result).to be_kind_of Hash
+    puts @single_raw_weather_service.get_result
   end
   it 'should check that Longitude is a float' do
     # expect(@single_weather_service.get_longitude).to be_kind_of Float
-    puts @single_weather_service
+    puts @single_raw_weather_service.get_longitude
   end
   # it 'should check is Latitude is a float' do
-  #   expect(@single_weather_service.get_longitude_value).to be_kind_of Float
-  #   pending
+  #   # expect(@single_weather_service.get_longitude_value).to be_kind_of Float
   # end
   # it 'should return longitude between the range of 0 to 181' do
   #   expect(@single_weather_service.get_longitude_value.length).to be_between(0,181).inclusive
