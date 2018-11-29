@@ -1,6 +1,6 @@
-require_relative 'services/current_day_service'
-require_relative 'services/5_day_service'
-require_relative 'services/16_day_service'
+require_relative 'services/single_current_day_service'
+require_relative 'services/five_day_weather_service'
+require_relative 'services/sixteen_day_weather_service'
 
 class OpenWeather
 

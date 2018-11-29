@@ -4,14 +4,10 @@ require 'json'
 class CityIdGenerator
   include HTTParty
 
-  base_uri 'https://samples.openweathermap.org'
+  base_uri 'api.openweathermap.org'
 
-
-  def initialize
-  end
-
-  def weather
-    JSON.parse(self.class.get("/data/2.5/weather?id=2172797&APPID=a210fbef76875d625711834647e06f34").body)
+  def weather(cityID)
+    JSON.parse(self.class.get("/data/2.5/group?id=#{cityID}&APPID=a210fbef76875d625711834647e06f34").body)
   end
 
 

@@ -5,13 +5,13 @@ require_relative '../generators/id_generator'
 class CurrentDayService
   include HTTParty
 
-  base_uri 'https://samples.openweathermap.org'
+  base_uri 'api.openweathermap.org'
 
   def initialize
-    @current_weather = CityIdGenerator.new.weather
+    @current_weather = CityIdGenerator.new
   end
 
-  def test
+  def get_result
     @current_weather
   end
 
@@ -50,19 +50,15 @@ class CurrentDayService
     @current_weather['sys']['id']
   end
 
-  def method_name
-
-  end
-
-  def longitude_value
+  def get_longitude
     @current_weather['coord']['lon']
   end
 
-  def latitude_value
+  def get_latitude
     @current_weather['coord']['lat']
   end
 
-  def id_value
+  def get_id
     @current_weather['weather'][0]['id']
   end
 
@@ -70,7 +66,7 @@ class CurrentDayService
     @current_weather['weather'][0]['main']
   end
 
-  def description_value
+  def get_description
     @current_weather['weather'][0]['description']
   end
 
@@ -90,3 +86,6 @@ class CurrentDayService
     @current_weather['main'].keys.length
   end
 end
+
+new = CurrentDayService.new
+new.test
