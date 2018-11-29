@@ -38,8 +38,5 @@ describe 'CoordsGenerator' do
     expect(@two_random_numbers[0]).not_to eq (@two_random_numbers[1])
 
   end
-#Iterate Generator 3 times and ensure its not the same number
-  it "longitude value should not be the same in consecuetive test" do
-    expect(@cord.generate_latitude).not_to eq @cord.generate_latitude
-  end
+
 end

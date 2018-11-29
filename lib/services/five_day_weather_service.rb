@@ -48,7 +48,7 @@ class FiveDayService
       false
     end
   end
-  def dt_txt_formatter(instance)
+  def dt_txt_format_checker(instance)
     true_values = 0
     #true_values represents how many test cases are true and therefore correct.
     # 4 cases are tested
@@ -57,18 +57,22 @@ class FiveDayService
     y, m, d = dt_txt_array[0].split '-'
     dt_txt_time_array = dt_txt_array[1].split ':'
     if (Date.valid_date? y.to_i, m.to_i, d.to_i)
+      #Date Check
       true_values += 1
     end
     if (0 <= dt_txt_time_array[0].to_i && dt_txt_time_array[0].to_i <= 23)
       true_values += 1
+      #Hours check
     end
     if (0 <= dt_txt_time_array[1].to_i && dt_txt_time_array[1].to_i <=59)
       true_values += 1
+      #Minutes check
     end
     if (0 <= dt_txt_time_array[2].to_i && dt_txt_time_array[2].to_i <= 59)
       true_values += 1
+      #Seconds Check
     end
     true_values
-
+    #expecting 4
   end
 end
