@@ -118,12 +118,12 @@ describe CurrentDayCoordinateService do
 
     it "shoud have a longitude value as float and between equal to the current longitude" do
       expect(@current_day_service.search_input_for('coord', 'lon')).to be_kind_of(Float).or be_kind_of(Integer)
-      expect(@current_day_service.search_input_for('coord', 'lon')).to eq(@current_day_service.longitude)
+      expect(@current_day_service.search_input_for('coord', 'lon')).to be_between((@current_day_service.longitude - 0.1), (@current_day_service.longitude + 0.1)).inclusive
     end
 
     it "shoud have a longitude value as float and between equal to the current longitude" do
       expect(@current_day_service.search_input_for('coord', 'lat')).to be_kind_of(Float).or be_kind_of(Integer)
-      expect(@current_day_service.search_input_for('coord', 'lat')).to eq(@current_day_service.latitude)
+      expect(@current_day_service.search_input_for('coord', 'lat')).to be_between((@current_day_service.latitude - 0.1), (@current_day_service.latitude + 0.1)).inclusive
     end
 
   end
@@ -160,6 +160,10 @@ describe CurrentDayCoordinateService do
 
   context 'testing main' do
 
+    it "should have a length of between 5 and 7" do
+      expect(@current_day_service.search_outer('main').length).to be_between(5, 7).inclusive
+    end
+
     it "should have a temperature value between 173 and 373" do
       expect(@current_day_service.search_input_for('main', 'temp')).to be_between(173, 373).inclusive
     end
@@ -186,11 +190,15 @@ describe CurrentDayCoordinateService do
     end
 
     it "should have a sea level value that is numeric" do
-      expect(@current_day_service.search_input_for('main', 'sea_level')).to be_kind_of(Float).or be_kind_of(Integer)
+      if (@current_day_service.search_outer('main').length > 5)
+        expect(@current_day_service.search_input_for('main', 'sea_level')).to be_kind_of(Float).or be_kind_of(Integer)
+      end
     end
 
     it "should have a ground level value that is numeric" do
-      expect(@current_day_service.search_input_for('main', 'grnd_level')).to be_kind_of(Float).or be_kind_of(Integer)
+      if (@current_day_service.search_outer('main').length > 5)
+        expect(@current_day_service.search_input_for('main', 'grnd_level')).to be_kind_of(Float).or be_kind_of(Integer)
+      end
     end
 
   end

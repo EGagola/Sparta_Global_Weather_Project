@@ -5,20 +5,19 @@ class NumberGenerator
   end
 
   def random
-    rand(0..39)
+    (rand * 40).floor
   end
 
-  def compare_two_different_numbers
+  def generate_two_different_numbers
     different = false
+    two_numbers = [random, 0]
     while(different == false) do
-      two_numbers = [0, 0]
-      two_numbers[0] = random
       two_numbers[1] = random
-      if two_numbers[0]!=two_numbers[1]
+      if (two_numbers[0] != two_numbers[1])
         different = true
       end
     end
-    two_numbers
+    return two_numbers
   end
 
 end

@@ -2,7 +2,7 @@ describe NumberGenerator do
 
   before(:all) do
     @rand = NumberGenerator.new
-    @two_random_numbers = @rand.compare_two_different_numbers
+    @two_random_numbers = @rand.generate_two_different_numbers
   end
 
   context "testing the generator that selects elements in the 5 day forecast" do
