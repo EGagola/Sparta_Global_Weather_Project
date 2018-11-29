@@ -5,6 +5,8 @@ require_relative '../generators/coordinates_generator'
 class CurrentDayCoordinateService
   include HTTParty
 
+  attr_accessor :latitude, :longitude
+
   def initialize
     # placeholders for the generator functions
     @coordinates = CoordsGenerator.new
