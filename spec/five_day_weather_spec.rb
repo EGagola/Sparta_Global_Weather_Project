@@ -9,6 +9,7 @@ describe FiveDayService do
   end
 
   context "Testing outer section of FiveDayService" do
+
     it "should be a hash" do
       expect(@five_day_service.get_five_day_data(@api_key)).to be_kind_of Hash
     end
@@ -36,8 +37,9 @@ describe FiveDayService do
       expect(@five_day_service.search_list_for(30,'weather')).to be_kind_of Array
     end
 
-    it "should contain 1 element in the weather array" do
+    it "should contain 1 Hash element in the weather array" do
       expect(@five_day_service.search_list_for(13,'weather').length).to eq 1
+      expect(@five_day_service.search_list_for(30,'weather')[0].class).to be_kind_of Hash
     end
 
     it "should have an integer id value in the weather array that is greater than 0" do
