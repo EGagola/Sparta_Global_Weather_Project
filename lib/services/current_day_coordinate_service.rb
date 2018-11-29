@@ -1,13 +1,15 @@
 require 'httparty'
 require 'json'
+require_relative '../generators/coordinates_generator'
 
 class CurrentDayCoordinateService
   include HTTParty
 
   def initialize
     # placeholders for the generator functions
-    @latitude = 35
-    @longitude = 139
+    @coordinates = CoordsGenerator.new
+    @latitude = @coordinates.generate_latitude
+    @longitude = @coordinates.generate_longitude
     @current_day = {}
   end
 
@@ -17,15 +19,15 @@ class CurrentDayCoordinateService
   end
 
   def search_outer(search_word)
-    @five_day_forecast["#{search_word}"]
+    @current_day["#{search_word}"]
   end
 
   def search_weather_for(search_word)
-    @five_day_forecast['weather'][0]["#{search_word}"]
+    @current_day['weather'][0]["#{search_word}"]
   end
 
   def search_input_for(input, search_word)
-    @five_day_forecast["#{input}"]["#{search_word}"]
+    @current_day["#{input}"]["#{search_word}"]
   end
 
 end
