@@ -40,9 +40,13 @@ The search_weather_for method works this same as list, but for the weather hash.
 
 The search_list_input_for method drills down one level further into the list hash. It takes three arguments in the following order: integer, desired hash key, and the key to search for. It otherwise functions the same as above.
 
+The Date and time at which data is collected is retrieved and stored within two values. These are the dt (delta time) and dt_txt (delta time text). These values are converted and compared through the dt_txt_format_checker method. Each value which is correct is considered true. The amount of times this happens is stored inside the variable true_values. As four values are tested, true_values is expected to be 4 if the data is correct.
+
 ### The Tests
 
 Currently testing every feature of the hash returned from the API, to varying extents.
+
+
 
 
 ## Sixteen Day Service
