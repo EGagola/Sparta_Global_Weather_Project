@@ -6,6 +6,10 @@ class SingleCurrentDayService
 
   base_uri 'api.openweathermap.org'
 
+  def initialize
+    get_single_weather_id("2332453")
+  end
+
   def get_single_weather_id(cityID)
     @single_weather_data = JSON.parse(self.class.get("/data/2.5/group?id=#{cityID}&APPID=a210fbef76875d625711834647e06f34").body)
   end
@@ -86,7 +90,5 @@ class SingleCurrentDayService
   end
 end
 
-
 m = SingleCurrentDayService.new
-puts m.get_single_weather_id("2332453")
-puts m.get_longitude_value
+puts m.get_test

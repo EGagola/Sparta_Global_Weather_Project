@@ -1,9 +1,13 @@
 describe SingleCurrentDayService do
 
   before(:all) do
+    @api_key = ENV['FIXER_API_KEY']
+    @single_weather_service = ParseJson.new(HTTParty::get("api.openweathermap.org/data/2.5/group?id=#{@api_key}").body)
+
     @single_weather_service = OpenWeather.new.single_weather_service
     @single_weather_service.get_single_weather_id('2332453')
   end
+
 
   it 'should have a result Hash'do
     expect(@single_weather_service.get_test).to be_kind_of Hash
