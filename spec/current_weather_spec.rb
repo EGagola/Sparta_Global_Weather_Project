@@ -10,23 +10,23 @@ describe CurrentDayService do
   pending
   end
   it 'should check is Longitude is a float' do
-    expect(@current_day_service.get_latitude_float).to be_kind_of Float
+    expect(@current_day_service.get_latitude).to be_kind_of Float
     pending
   end
   it 'should check is Latitude is a float' do
-    expect(@current_day_service.get_longitude_float).to be_kind_of Float
+    expect(@current_day_service.get_longitude).to be_kind_of Float
     pending
   end
   it 'should return longitute between the range of 0 to 181' do
-    expect(@current_day_service.get_longitude_between_0_to_181.length).to be_between(0,181).inclusive
+    expect(@current_day_service.get_longitude_between_0_to_181).to be_between(0,181).inclusive
     pending
   end
   it 'should return Latitude between the range of 0 to 181' do
-    expect(@current_day_service.get_latitude_between_0_to_181.length).to be_between(0,181).inclusive
+    expect(@current_day_service.get_latitude_between_0_to_181).to be_between(0,181).inclusive
     pending
   end
   it 'should return an Integer for Weather Id' do
-    expect(@current_day_service.get_integer_for_weather_id).to be_kind_of Numeric
+    expect(@current_day_service.get_id).to be_kind_of Numeric
     pending
   end
   it 'the weather should have 4 keys'do
@@ -34,23 +34,23 @@ describe CurrentDayService do
     pending
   end
   it 'should be a string in Description'do
-    expect(@current_day_service.get_description_string).to be_kind_of String
+    expect(@current_day_service.get_description).to be_kind_of String
     pending
   end
   it 'should have icon in weather to be a string'do
-    expect(@current_day_service.get_weather_to_be_string).to be_kind_of String
+    expect(@current_day_service.get_weather).to be_kind_of String
     pending
   end
   it 'should have the base as a string'do
-    expect(@current_day_service.get_base_as_string).to be_kind_of String
+    expect(@current_day_service.get_base).to be_kind_of String
     pending
   end
   it 'should check the visibility is a integer'do
-    expect(@current_day_service.get_visibility_is_an_integer).to be_kind_of Integer
+    expect(@current_day_service.get_visibility).to be_kind_of Integer
     pending
   end
   it 'should check sys has id as a float 'do
-    expect(@current_day_service.system_id_value).to be_kind_of Float
+    expect(@current_day_service.get_system_id).to be_kind_of Float
     pending
   end
   it 'should check system has 6 keys'do
@@ -58,19 +58,39 @@ describe CurrentDayService do
     pending
   end
   it 'clouds all return integer'do
-    expect(@current_day_service.get_clouds_integer).to be_kind_of Integer
+    expect(@current_day_service.get_clouds).to be_kind_of Integer
     pending
   end
   it 'check all keys return string'do
-    expect(@current_day_service.get_keys_return_string).to be_kind_of String
+    expect(@current_day_service.get_keys_return).to be_kind_of String
     pending
   end
   it 'base should have stations as a string'do
-    expect(@current_day_service.get_base_station_string).to be_kind_of String
+    expect(@current_day_service.get_base_station).to be_kind_of String
     pending
   end
   it 'should return float as visibility'do
-    expect(@current_day_service.get_float_visibility).to be_kind_of String
+    expect(@current_day_service.get_visibility).to be_kind_of String
+    pending
+  end
+  it 'should check longitute to be between -90 to 90'do
+    expect(@current_day_service.get_between_longitude).to be_between(-90,90).inclusive
+    pending
+  end
+  it 'should check latitude to be between -180 to 180'do
+    expect(@current_day_service.get_between_latitude).to be_between(-180,180).inclusive
+    pending
+  end
+  it 'check humidity should be between 30 to 50 percent'do
+    expect(@current_day_service.get_humidity).to be_between(30,50).inclusive
+    pending
+  end
+  it 'check id to be length 7'do
+    expect(@current_day_service.get_id.length).to eq 7
+    pending
+  end
+  it 'should check longitute to be between -90 to 90'do
+    expect(@current_day_service.get_between_longitude).to be_between(-90,90).inclusive
     pending
   end
 end
