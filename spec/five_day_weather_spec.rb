@@ -59,7 +59,7 @@ describe FiveDayService do
     end
   end
 
-  context 'testing main inside list' do
+  context 'Testing main inside list' do
 
     it "should contain 8 items" do
       expect(@five_day_service.search_list_for(0, 'main').length).to eq 8
@@ -112,7 +112,18 @@ describe FiveDayService do
       expect(@five_day_service.search_list_input_for(21, 'main', 'temp_kf')).to be_kind_of(Integer)
       expect(@five_day_service.search_list_input_for(27, 'main', 'temp_kf')).to be_kind_of(Integer)
     end
+  end
 
+  context 'Testing sys inside the list' do
+
+    it "should be in a hash format with 1 element" do
+      expect(@five_day_service.search_list_for(1,'sys')).to be_kind_of(Hash)
+      expect(@five_day_service.search_list_for(14,'sys').length).to eq 1
+    end
+
+    it "should have a pod value as a string" do
+      expect(@five_day_service.search_list_input_for(39,'sys','pod')).to be_kind_of(String)
+    end
   end
 
 end
