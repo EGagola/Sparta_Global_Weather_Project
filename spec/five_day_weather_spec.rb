@@ -28,7 +28,7 @@ describe FiveDayService do
     expect(@five_day_service.search_outer('list').length).to eq(@five_day_service.search_outer('cnt'))
   end
 
-  context 'main' do
+  context 'testing main inside list' do
 
     it "should contain 8 items" do
       expect(@five_day_service.search_list_for(0, 'main').length).to eq 8
