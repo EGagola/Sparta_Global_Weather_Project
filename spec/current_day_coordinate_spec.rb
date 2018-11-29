@@ -10,8 +10,9 @@ describe CurrentDayCoordinateService do
 
   context "testing outer" do
 
-    it "should return a hash" do
+    it "should return a hash of length 11" do
       expect(@current_day_service.get_current_day_data(@api_key)).to be_kind_of Hash
+      expect(@current_day_service.get_current_day_data(@api_key).length).to eq 11
     end
 
     it "should have a cod integer that is 200" do
