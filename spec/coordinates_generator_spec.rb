@@ -35,7 +35,7 @@ describe 'CoordsGenerator' do
   end
 
   it "should always return two different numbers" do
-    expect(@two_random_numbers[0]).not_to eq (@cord.compare_two_different_numbers[1])
+    expect(@two_random_numbers[0]).not_to eq (@two_random_numbers[1])
   end
 
 end
