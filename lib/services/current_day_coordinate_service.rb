@@ -2,6 +2,7 @@ require 'httparty'
 require 'json'
 require_relative '../generators/coordinates_generator'
 
+
 class CurrentDayCoordinateService
   include HTTParty
 
@@ -16,7 +17,6 @@ class CurrentDayCoordinateService
   end
 
   def get_current_day_data(api_key)
-    # api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}
     @current_day = JSON.parse(self.class.get("http://api.openweathermap.org/data/2.5/weather?lat=#{@latitude}&lon=#{@longitude}&APPID=#{api_key}").body)
   end
 
