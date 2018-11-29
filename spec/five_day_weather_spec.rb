@@ -1,3 +1,4 @@
+
 describe FiveDayService do
 
   attr_accessor :api_key
@@ -63,7 +64,7 @@ describe FiveDayService do
 
   end
 
-  context 'testing main inside list' do
+  context 'Testing main inside list' do
 
     it "should contain 8 items" do
       expect(@five_day_service.search_list_for(0, 'main').length).to eq 8
@@ -116,21 +117,32 @@ describe FiveDayService do
       expect(@five_day_service.search_list_input_for(21, 'main', 'temp_kf')).to be_kind_of(Integer)
       expect(@five_day_service.search_list_input_for(27, 'main', 'temp_kf')).to be_kind_of(Integer)
     end
-
   end
 
-    context "testing clouds inside list" do
+  context 'Testing sys inside the list' do
 
-      it "should have a clouds hash of length 1 in list" do
-        expect(@five_day_service.search_list_for(12,'clouds')).to be_kind_of Hash
-        expect(@five_day_service.search_list_for(12,'clouds').length).to eq 1
-      end
-
-      it "should have an integer value for all in clouds that is between 0 and 100" do
-        expect(@five_day_service.search_list_input_for(38,'clouds','all')).to be_kind_of Integer
-        expect(@five_day_service.search_list_input_for(38,'clouds','all')).to be_between(0,100).inclusive
-      end
-
+    it "should be in a hash format with 1 element" do
+      expect(@five_day_service.search_list_for(1,'sys')).to be_kind_of(Hash)
+      expect(@five_day_service.search_list_for(14,'sys').length).to eq 1
     end
+
+    it "should have a pod value as a string" do
+      expect(@five_day_service.search_list_input_for(39,'sys','pod')).to be_kind_of(String)
+    end
+  end
+
+ context "testing clouds inside list" do
+
+   it "should have a clouds hash of length 1 in list" do
+      expect(@five_day_service.search_list_for(12,'clouds')).to be_kind_of Hash
+      expect(@five_day_service.search_list_for(12,'clouds').length).to eq 1
+    end
+
+    it "should have an integer value for all in clouds that is between 0 and 100" do
+      expect(@five_day_service.search_list_input_for(38,'clouds','all')).to be_kind_of Integer
+      expect(@five_day_service.search_list_input_for(38,'clouds','all')).to be_between(0,100).inclusive
+    end
+
+  end
 
 end

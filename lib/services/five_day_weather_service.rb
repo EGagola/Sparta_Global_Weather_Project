@@ -1,5 +1,6 @@
 require 'httparty'
 require 'json'
+require_relative '../generators/coordinates_generator'
 
 class FiveDayService
   include HTTParty
@@ -8,7 +9,7 @@ class FiveDayService
     # placeholders for the generator functions
     @json_file = ParseJSON.new
     @latitude = @json_file.get_coord(100,'lat')
-    @longitude = @json_file.get_coord(,'lon')
+    @longitude = @json_file.get_coord(100,'lon')
     @five_day_forecast = {}
   end
 

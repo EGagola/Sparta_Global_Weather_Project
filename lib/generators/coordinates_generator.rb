@@ -17,7 +17,7 @@ class ParseJSON
   end
 
 end
-# 
+#
 # newt = ParseJSON.new('../../city.list.json')
 # puts newt.get_coord(100,'lon')
 # puts newt.get_coord(100,'lat')
