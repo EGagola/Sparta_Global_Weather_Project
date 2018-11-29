@@ -15,11 +15,6 @@ class CityIdGenerator
         @city_data.each do |city|
             id_array << city['id']
         end
-
         id_array.sample
     end
-
 end
-
-id = CityIdGenerator.new
-# p id.single_generator
