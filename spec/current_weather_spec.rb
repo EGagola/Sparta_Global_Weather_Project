@@ -18,15 +18,15 @@ describe CurrentDayService do
     pending
   end
   it 'should return longitute between the range of 0 to 181' do
-    expect(@current_day_service.get_longitude_between_0_to_181).to be_between(0,181)
+    expect(@current_day_service.get_longitude_between_0_to_181.length).to be_between(0,181).inclusive
     pending
   end
   it 'should return Latitude between the range of 0 to 181' do
-    expect(@current_day_service.get_latitude_between_0_to_181).to be_between(0,181)
+    expect(@current_day_service.get_latitude_between_0_to_181.length).to be_between(0,181).inclusive
     pending
   end
   it 'should return an Integer for Weather Id' do
-    expect(@current_day_service.get_integer_for_weather_id).to be_kind_of Integer
+    expect(@current_day_service.get_integer_for_weather_id).to be_kind_of Numeric
     pending
   end
   it 'the weather should have 4 keys'do
@@ -65,8 +65,16 @@ describe CurrentDayService do
     expect(@current_day_service.get_keys_return_string).to be_kind_of String
     pending
   end
-  it 'base should have station as a string'do
-    expect(@current_day_service.get_keys_return_strin).to be_kind_of String
+  it 'base should have stations as a string'do
+    expect(@current_day_service.get_base_station_string).to be_kind_of String
+    pending
+  end
+  it 'should return float as visibility'do
+    expect(@current_day_service.get_float_visibility).to be_kind_of String
+    pending
+  end
+  it 'should return float as visibility'do
+    expect(@current_day_service.get_float_visibility).to be_kind_of String
     pending
   end
 end
