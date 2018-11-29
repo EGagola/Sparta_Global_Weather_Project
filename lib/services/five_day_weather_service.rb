@@ -3,15 +3,14 @@ require 'json'
 require 'date'
 require_relative '../generators/coordinates_generator'
 
-
 class FiveDayService
   include HTTParty
 
   def initialize
-    # placeholders for the generator functions
-    @coordinates = CoordsGenerator.new
-    @latitude = @coordinates.generate_latitude
-    @longitude = @coordinates.generate_longitude
+    @json_file = ParseJSON.new
+    random_val = @json_file.generate_random_number
+    @latitude = @json_file.get_coord(random_val,'lat')
+    @longitude = @json_file.get_coord(random_val,'lon')
     @five_day_forecast = {}
   end
 
