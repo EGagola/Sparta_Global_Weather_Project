@@ -1,14 +1,15 @@
 require 'httparty'
 require 'json'
-
+require 'date'
 class FiveDayService
   include HTTParty
 
   def initialize
     # placeholders for the generator functions
-    @latitude = 35
-    @longitude = 139
-    @five_day_forecast = 0
+    @coordinates = CoordsGenerator.new
+    @latitude = @coordinates.generate_latitude
+    @longitude = @coordinates.generate_longitude
+    @five_day_forecast = {}
   end
 
   def get_five_day_data(api_key)
@@ -35,4 +36,19 @@ class FiveDayService
     @five_day_forecast['list'][iterator]["#{input}"]["#{search_word}"]
   end
 
+  def delta_text_check(instance)
+    dt_text_input = instance.search_list_for(0, "dt_txt")
+    deltatime = instance.search_list_for(0, 'dt')
+    dt_text_input = DateTime.parse(dt_text_input).to_time.to_i
+    if dt_text_input == deltatime
+       true
+    else
+      false
+    end
+  end
+  def dt_txt_formatter(instance)
+    dt_text_input = instance.search_list_for(0, "dt_txt")
+    dt_txt_array = dt_text_input.split(" ")
+    dt_txt_array[0]
+  end
 end

@@ -139,13 +139,17 @@ describe FiveDayService do
     end
     it "should have delta time text in the correct format" do
       #bonus
+
+
     end
 
-    it "should have delta time equal to delta time text" do
-      #split into array and test each array
+    it "should have delta time equal to the delta time text" do
+      expect(@five_day_service.delta_text_check(@five_day_service)).to eq true
     end
+    
     it "should have test intervals of three hours" do
       expect(@five_day_service.search_list_for(1, 'dt') - 10800).to eq (@five_day_service.search_list_for(0, 'dt'))
+      expect(@five_day_service.search_list_for(6, 'dt') - 10800).to eq (@five_day_service.search_list_for(5, 'dt'))
     end
-end
+  end
 end
