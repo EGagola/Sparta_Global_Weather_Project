@@ -14,6 +14,7 @@ describe OpenWeather do
     expect(@single_weather_service.get_longitude).to be_kind_of(Float)
     puts @single_weather_service.get_longitude
   end
+  
   it 'should check is Latitude is a float' do
     expect(@single_weather_service.get_longitude).to be_kind_of(Float)
   end
