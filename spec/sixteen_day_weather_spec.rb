@@ -1,3 +1,0 @@
-describe SixteenDayService do
-  
-end
