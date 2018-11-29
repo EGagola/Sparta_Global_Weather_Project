@@ -1,92 +1,95 @@
 require 'httparty'
 require 'json'
-require_relative '../generators/id_generator'
-
-class CurrentDayService
+ 
+class SingleCurrentDayService
   include HTTParty
-
-  base_uri 'api.openweathermap.org'
-
+ 
+  # base_uri 'api.openweathermap.org'
+ 
   def initialize
-    @current_weather = weather('2332453')
+    get_single_weather_id("2332453")
+    @single_weather_data = {}
   end
-
-  def weather(cityID)
-    JSON.parse(self.class.get("/data/2.5/group?id=#{cityID}&APPID=a210fbef76875d625711834647e06f34").body)
+ 
+  def get_single_weather_id(cityID)
+    @single_weather_data = JSON.parse(self.class.get("https://api.openweathermap.org/data/2.5/group?id=#{cityID}&APPID=#{@api_key}").body)
   end
-
-  def get_result
-    @current_weather
+ 
+  def get_test
+    @single_weather_data
   end
-
-  def get_base
-    @current_weather['base']
+ 
+  def get_base_value
+    @single_weather_data['base']
   end
-
-  def get_main
-    @current_weather['main'].length
+ 
+  def get_main_value
+    @single_weather_data['main'].length
   end
-
-  def get_visibility
-    @current_weather['visibility']
+ 
+  def get_visibility_value
+    @single_weather_data['visibility']
   end
-
-  def get_wind_speed
-    @current_weather['wind']['speed']
+ 
+  def get_wind_speed_value
+    @single_weather_data['wind']['speed']
   end
-
-  def get_wind_deg
-    @current_weather['wind']['deg']
+ 
+  def get_wind_deg_value
+    @single_weather_data['wind']['deg']
   end
-
-  def key_value
-    @current_weather['sys']['type']
+ 
+  def get_key_value
+    @single_weather_data['sys']['type']
   end
-
-  def country_string
-    @current_weather['sys']['country']
+ 
+  def get_country_value
+    @single_weather_data['sys']['country']
     # test id for id it should retun integer
     #name should have type sting
     #code should return an integer
   end
-
-  def sys_id_float
-    @current_weather['sys']['id']
+ 
+  def get_sys_id_value
+    @single_weather_data['sys']['id']
   end
-
-  def get_longitude
-    @current_weather['list'][0]['coord']['lon']
+ 
+  def get_longitude_value
+    @single_weather_data['coord']['lon']
   end
-
-  def get_latitude
-    @current_weather['coord']['lat']
+ 
+  def get_latitude_value
+    @single_weather_data['coord']['lat']
   end
-
-  def get_id
-    @current_weather['weather'][0]['id']
+ 
+  def get_id_value
+    @single_weather_data['weather'][0]['id']
   end
-
-  def main_value
-    @current_weather['weather'][0]['main']
+ 
+  def get_main_value
+    @single_weather_data['weather'][0]['main']
   end
-
-  def get_description
-    @current_weather['weather'][0]['description']
+ 
+  def get_description_value
+    @single_weather_data['weather'][0]['description']
   end
-
-  def icon_value
-    @current_weather['weather'][0]['icon']
+ 
+  def get_icon_value
+    @single_weather_data['weather'][0]['icon']
   end
-
-  def weather_key_value
-    @current_weather['weather'][0].keys.length
+ 
+  def get_weather_value
+    @single_weather_data['weather'][0].keys.length
   end
-
-  def coordinates_key_value
-    @current_weather['coord'].keys.length
+ 
+  def get_coordinates_key_value
+    @single_weather_data['coord'].keys.length
   end
-
-  def main_key_value
-    @current_weather['main'].keys.length
+ 
+  def get_main_key_value
+    @single_weather_data['main'].keys.length
   end
 end
+ 
+m = SingleCurrentDayService.new
+puts m.get_test

@@ -1,9 +1,11 @@
 describe OpenWeather do
 
   before(:all) do
-    @single_raw_weather_service = CurrentDayService.new
-    @single_raw_weather_service.weather('2332453')
+    @api_key = ENV['OPENWEATHER_API_KEY']
+    @single_weather_service = OpenWeather.new.single_weather_service
+    @single_weather_service.get_single_weather_id('2332453')
   end
+
 
   it 'should have a result Hash'do
     # expect(@single_weather_service.get_result).to be_kind_of Hash
