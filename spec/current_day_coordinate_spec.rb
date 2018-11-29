@@ -19,8 +19,14 @@ describe CurrentDayCoordinateService do
       expect(@current_day_service.search_outer('cod')).to eq 200
     end
 
-    it "should have a dt int value" do
+    it "should have a dt int value greater than 0" do
       expect(@current_day_service.search_outer('dt')).to be_kind_of Integer
+      expect(@current_day_service.search_outer('dt')).to be > 0
+    end
+
+    it "should have an id value that is an integer and greater than 0" do
+      expect(@current_day_service.search_outer('id')).to be_kind_of Integer
+      expect(@current_day_service.search_outer('id')).to be > 0
     end
 
   end
