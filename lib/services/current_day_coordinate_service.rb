@@ -6,6 +6,8 @@ require_relative '../generators/coordinates_generator'
 class CurrentDayCoordinateService
   include HTTParty
 
+  attr_accessor :latitude, :longitude
+
   def initialize
     @json_file = ParseJSON.new
     random_val = @json_file.generate_random_number

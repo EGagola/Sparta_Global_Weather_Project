@@ -6,7 +6,6 @@ describe CurrentDayCoordinateService do
     @api_key = ENV['OPENWEATHER_API_KEY']
     @current_day_service = OpenWeather.new.current_day_service
     @current_day_service.get_current_day_data(@api_key)
-    puts @current_day_service.get_current_day_data(@api_key)
   end
 
   context "testing outer" do
@@ -35,6 +34,10 @@ describe CurrentDayCoordinateService do
       expect(@current_day_service.search_outer('name')).to be_kind_of String
     end
 
+    it "should have a base value in string format" do
+      expect(@current_day_service.search_outer('base')).to be_kind_of String
+    end
+
   end
 
   context "testing wind" do
@@ -52,6 +55,16 @@ describe CurrentDayCoordinateService do
     it "should have a degree value in wind that is a number between 0 and 360" do
       expect(@current_day_service.search_input_for('wind','deg')).to be_kind_of(Float).or be_kind_of(Integer).or be(nil)
       expect(@current_day_service.search_input_for('wind','deg')).to be(nil).or be_between(0,360).inclusive
+    end
+
+  end
+
+  context 'testing rain if it appears' do
+
+    it "should be between 0 and 100" do
+      if (@current_day_service.search_outer('rain') != nil)
+        expect(@current_day_service.search_input_for('rain', '3h')).to be_between(0, 101).exclusive
+      end
     end
 
   end
@@ -93,6 +106,91 @@ describe CurrentDayCoordinateService do
     it "should contain an int value for sunset that is greater than sunrise or 0" do
       expect(@current_day_service.search_input_for('sys','sunset')).to be_kind_of Integer
       expect(@current_day_service.search_input_for('sys','sunset')). to eq(0).or be > (@current_day_service.search_input_for('sys','sunrise'))
+    end
+
+  end
+
+  context 'testing coordinates' do
+
+    it "should contain 2 entires" do
+      expect(@current_day_service.search_outer('coord').length).to eq 2
+    end
+
+    it "shoud have a longitude value as float and between equal to the current longitude" do
+      expect(@current_day_service.search_input_for('coord', 'lon')).to be_kind_of(Float).or be_kind_of(Integer)
+      expect(@current_day_service.search_input_for('coord', 'lon')).to eq(@current_day_service.longitude)
+    end
+
+    it "shoud have a longitude value as float and between equal to the current longitude" do
+      expect(@current_day_service.search_input_for('coord', 'lat')).to be_kind_of(Float).or be_kind_of(Integer)
+      expect(@current_day_service.search_input_for('coord', 'lat')).to eq(@current_day_service.latitude)
+    end
+
+  end
+
+  context 'testing weather' do
+
+    it "should be an array containing one hash" do
+      expect(@current_day_service.search_outer('weather')).to be_kind_of(Array)
+      expect(@current_day_service.search_outer('weather').length).to eq 1
+      expect(@current_day_service.search_outer('weather')[0]).to be_kind_of(Hash)
+    end
+
+    it "should have an id value in integer format and be 3 characters long" do
+      expect(@current_day_service.search_weather_for('id')).to be_kind_of(Integer)
+      # id values can never begin with zeros (so .to_s can be used). Refer to: https://openweathermap.org/weather-conditions
+      expect(@current_day_service.search_weather_for('id').to_s.length).to eq 3
+    end
+
+    it "should have a main value in string format and below 255 characters" do
+      expect(@current_day_service.search_weather_for('main')).to be_kind_of(String)
+      expect(@current_day_service.search_weather_for('main').length).to be < 255
+    end
+
+    it "should have a description value in string format" do
+      expect(@current_day_service.search_weather_for('description')).to be_kind_of(String)
+    end
+
+    it "should have an icon value in string format and be 3 characters long" do
+      expect(@current_day_service.search_weather_for('icon')).to be_kind_of(String)
+      expect(@current_day_service.search_weather_for('icon').length).to eq 3
+    end
+
+  end
+
+  context 'testing main' do
+
+    it "should have a temperature value between 173 and 373" do
+      expect(@current_day_service.search_input_for('main', 'temp')).to be_between(173, 373).inclusive
+    end
+
+    it "should have a pressure value which is numeric" do
+      expect(@current_day_service.search_input_for('main', 'pressure')).to be_kind_of(Integer).or be_kind_of(Float)
+    end
+
+    it "should have a humidity value which is between 0 and 100 and be integer" do
+      expect(@current_day_service.search_input_for('main', 'humidity')).to be_kind_of(Integer)
+      expect(@current_day_service.search_input_for('main', 'humidity')).to be_between(0,100).inclusive
+    end
+
+    it "should have a temperature min value between 173 and 373" do
+      expect(@current_day_service.search_input_for('main', 'temp_min')).to be_between(173, 373).inclusive
+    end
+
+    it "should have a temperature max value between 173 and 373" do
+      expect(@current_day_service.search_input_for('main', 'temp_max')).to be_between(173, 373).inclusive
+    end
+
+    it "should have a temperature max value between 173 and 373" do
+      expect(@current_day_service.search_input_for('main', 'temp_max')).to be_between(173, 373).inclusive
+    end
+
+    it "should have a sea level value that is numeric" do
+      expect(@current_day_service.search_input_for('main', 'sea_level')).to be_kind_of(Float).or be_kind_of(Integer)
+    end
+
+    it "should have a ground level value that is numeric" do
+      expect(@current_day_service.search_input_for('main', 'grnd_level')).to be_kind_of(Float).or be_kind_of(Integer)
     end
 
   end
