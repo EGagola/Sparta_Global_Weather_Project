@@ -1,16 +1,18 @@
-describe SingleCurrentDayService do
+describe OpenWeather do
 
-  before(:all) do
-    @single_weather_service = OpenWeather.new.single_weather_service
-    @single_weather_service.get_single_weather_id('2332453')
+  before(:each) do
+    @single_raw_weather_service = CurrentDayService.new
+    @single_raw_weather_service.weather('2332453')
+    @single_weather_service = @single_raw_weather_service.get_result
   end
 
   it 'should have a result Hash'do
-    expect(@single_weather_service.get_test).to be_kind_of Hash
+    expect(@single_weather_service).to be_kind_of Hash
 
   end
   it 'should check that Longitude is a float' do
-    expect(@single_weather_service.get_longitude_value.to_i).to be_kind_of Float
+    # expect(@single_weather_service.get_longitude).to be_kind_of Float
+    puts @single_weather_service
   end
   # it 'should check is Latitude is a float' do
   #   expect(@single_weather_service.get_longitude_value).to be_kind_of Float

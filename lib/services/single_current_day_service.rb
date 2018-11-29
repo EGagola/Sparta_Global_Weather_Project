@@ -8,8 +8,13 @@ class CurrentDayService
   base_uri 'api.openweathermap.org'
 
   def initialize
-    @current_weather = CityIdGenerator.new
+    @current_weather = weather('2332453')
   end
+
+  def weather(cityID)
+    JSON.parse(self.class.get("/data/2.5/group?id=#{cityID}&APPID=a210fbef76875d625711834647e06f34").body)
+  end
+
 
   def get_result
     @current_weather
@@ -87,5 +92,4 @@ class CurrentDayService
   end
 end
 
-new = CurrentDayService.new
-new.test
+puts new = CurrentDayService.new
