@@ -65,6 +65,10 @@ describe CurrentDayCoordinateService do
       expect(@current_day_service.search_input_for('sys','message')).to be_kind_of Float
     end
 
+    it "should contain a string country" do
+      expect(@current_day_service.search_input_for('sys','country')).to be_kind_of String
+    end
+
   end
 
 end
