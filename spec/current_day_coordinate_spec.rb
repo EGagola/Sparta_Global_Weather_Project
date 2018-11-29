@@ -69,6 +69,16 @@ describe CurrentDayCoordinateService do
       expect(@current_day_service.search_input_for('sys','country')).to be_kind_of String
     end
 
+    it "should contain an int value for sunrise that is greater than dt minus one day" do
+      expect(@current_day_service.search_input_for('sys','sunrise')).to be_kind_of Integer
+      expect(@current_day_service.search_input_for('sys','sunrise')).to be > (@current_day_service.search_outer('dt') - 86400)
+    end
+
+    it "should contain an int value for sunset that is greater than sunrise" do
+      expect(@current_day_service.search_input_for('sys','sunset')).to be_kind_of Integer
+      expect(@current_day_service.search_input_for('sys','sunset')). to be > (@current_day_service.search_input_for('sys','sunrise'))
+    end
+
   end
 
 end
