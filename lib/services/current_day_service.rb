@@ -8,8 +8,7 @@ class CurrentDayService
   base_uri 'https://samples.openweathermap.org'
 
   def initialize
-    @current_weather = CityIdGenerator.new
-    @current_weather = @current_weather.weather
+    @current_weather = CityIdGenerator.new.weather
   end
 
   def test
@@ -39,4 +38,4 @@ class CurrentDayService
 end
 
 new = CurrentDayService.new
-puts new.get_wind_deg
+puts new.test
