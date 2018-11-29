@@ -2,15 +2,6 @@ require 'httparty'
 require 'json'
 
 class CityIdGenerator
-#   include HTTParty
-
-#   base_uri 'api.openweathermap.org'
-
-#   def weather(cityID)
-#     JSON.parse(self.class.get("/data/2.5/group?id=#{cityID}&APPID=a210fbef76875d625711834647e06f34").body)
-#   end
-
-# end
 
     attr_accessor :id_data
 
@@ -20,14 +11,16 @@ class CityIdGenerator
     end 
 
     def single_generator
-    id_array = []
+        id_array = []
 
-        city_data.each do |city|
+        @city_data.each do |city|
             id_array << city['id']
         end 
 
-        id_array
+        id_array.sample
     end
-
   
 end
+
+id = CityIdGenerator.new
+p id.single_generator
