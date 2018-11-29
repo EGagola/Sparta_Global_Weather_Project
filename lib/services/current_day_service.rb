@@ -7,7 +7,6 @@ class CurrentDayService
 
   base_uri 'https://samples.openweathermap.org'
 
-
   def initialize
     @current_weather = CityIdGenerator.new
     @current_weather = @current_weather.weather
@@ -52,8 +51,6 @@ class CurrentDayService
   def main_key_value
     @current_weather['main'].keys.length
   end
-  64685988ded4d1924f4e663d9f52b4c489c238db
-
 end
 
 new = CurrentDayService.new
