@@ -4,6 +4,7 @@ require 'json'
 class CurrentDayService
   include HTTParty
 
-  base_uri ''
+  base_uri 'https://openweathermap.org'
+
 
 end
