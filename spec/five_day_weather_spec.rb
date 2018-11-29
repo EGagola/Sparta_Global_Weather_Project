@@ -112,18 +112,24 @@ describe FiveDayService do
       expect(@five_day_service.search_list_input_for(21, 'main', 'temp_kf')).to be_kind_of(Integer)
       expect(@five_day_service.search_list_input_for(27, 'main', 'temp_kf')).to be_kind_of(Integer)
     end
+  end
+
+    context 'testing time, rain, sys and wind values inside of list' do
 
     it "should have a wind data in a hash" do
       expect(@five_day_service.search_list_for(3, 'wind')).to be_kind_of Hash
     end
+
     it "should have a wind hash of length 2" do
       expect(@five_day_service.search_list_for(13, 'wind').length).to eq 2
     end
+
     it "should have a wind speed as a float" do
       expect(@five_day_service.search_list_input_for(13, "wind", "speed")).to be_kind_of Float
     end
+
     it "should have a wind degree as a float " do
-      expect(@five_day_service.search_list_input_for(13, "wind", "speed")).to be_kind_of Float
+      expect(@five_day_service.search_list_input_for(13, "wind", "speed")).to be_kind_of(Float).or be_kind_of(Integer)
     end
 
     it "should have a wind degree between 0 and 360" do
@@ -137,19 +143,20 @@ describe FiveDayService do
     it "should have data within a 5 day timescale" do
       expect(@five_day_service.search_list_for(39, 'dt') - 421200).to eq (@five_day_service.search_list_for(0, 'dt'))
     end
+
     it "should have delta time text in the correct format" do
-      #bonus
-
-
+      expect(@five_day_service.dt_txt_formatter(@five_day_service)).to eq 4
+      #expecting 4 true values
     end
 
     it "should have delta time equal to the delta time text" do
       expect(@five_day_service.delta_text_check(@five_day_service)).to eq true
     end
-    
+
     it "should have test intervals of three hours" do
       expect(@five_day_service.search_list_for(1, 'dt') - 10800).to eq (@five_day_service.search_list_for(0, 'dt'))
       expect(@five_day_service.search_list_for(6, 'dt') - 10800).to eq (@five_day_service.search_list_for(5, 'dt'))
+      expect(@five_day_service.search_list_for(39, 'dt') - 10800).to eq (@five_day_service.search_list_for(38, 'dt'))
     end
   end
 end
