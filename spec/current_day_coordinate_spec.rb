@@ -121,7 +121,7 @@ describe CurrentDayCoordinateService do
       expect(@current_day_service.search_input_for('coord', 'lon')).to be_between((@current_day_service.longitude - 0.1), (@current_day_service.longitude + 0.1)).inclusive
     end
 
-    it "shoud have a longitude value as float and between equal to the current longitude" do
+    it "shoud have a latitude value as float and between equal to the current latitude" do
       expect(@current_day_service.search_input_for('coord', 'lat')).to be_kind_of(Float).or be_kind_of(Integer)
       expect(@current_day_service.search_input_for('coord', 'lat')).to be_between((@current_day_service.latitude - 0.1), (@current_day_service.latitude + 0.1)).inclusive
     end
