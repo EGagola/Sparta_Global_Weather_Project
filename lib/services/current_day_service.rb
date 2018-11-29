@@ -14,7 +14,6 @@ class CurrentDayService
   def test
     @current_weather
   end
-
   def get_base
     @current_weather['base']
   end
@@ -54,11 +53,13 @@ class CurrentDayService
 
   end
 
-  def longitude_value
+
+  def get_latitude_float
+
     @current_weather['coord']['lon']
   end
 
-  def latitude_value
+  def get_longitude_float
     @current_weather['coord']['lat']
   end
 
