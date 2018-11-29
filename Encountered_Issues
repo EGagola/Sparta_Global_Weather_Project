@@ -1,0 +1,5 @@
+- In some countries & seasons the sun will never rise or fail, getting time of 0 goes against test (Expected outcome)
+
+- If not on land there is no country - hash length 4=>3, country returns nil, id returns 0. (Expected outcome)
+
+- Sometimes outer hash returns an extra field, not known why.
