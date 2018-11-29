@@ -1,7 +1,5 @@
 require 'httparty'
 require 'json'
-require_relative '../generators/coordinates_generator'
-
 
 class CurrentDayCoordinateService
   include HTTParty

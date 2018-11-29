@@ -1,4 +1,3 @@
-
 describe FiveDayService do
 
   attr_accessor :api_key
@@ -131,9 +130,9 @@ describe FiveDayService do
     end
   end
 
- context "testing clouds inside list" do
+  context 'Testing clouds inside list' do
 
-   it "should have a clouds hash of length 1 in list" do
+    it "should have a clouds hash of length 1 in list" do
       expect(@five_day_service.search_list_for(12,'clouds')).to be_kind_of Hash
       expect(@five_day_service.search_list_for(12,'clouds').length).to eq 1
     end
@@ -142,7 +141,26 @@ describe FiveDayService do
       expect(@five_day_service.search_list_input_for(38,'clouds','all')).to be_kind_of Integer
       expect(@five_day_service.search_list_input_for(38,'clouds','all')).to be_between(0,100).inclusive
     end
+  end
 
+  context "testing rain inside list" do
+
+    it 'should return as a hash' do
+      expect(@five_day_service.search_list_for(2,'rain')).to be_kind_of(Hash)
+    end
+
+    it 'should return key as string if rain it is not empty' do
+      if (@five_day_service.search_list_for(30,'rain') != {})
+        expect(@five_day_service.search_list_for(30, 'rain').keys[0]).to be_kind_of(String)
+      end
+    end
+
+    it 'should return value as a float greater than zero if rain it is not empty' do
+      if (@five_day_service.search_list_for(30,'rain') != {})
+        expect(@five_day_service.search_list_for(30, 'rain')["3h"]).to be_kind_of(Float)
+        expect(@five_day_service.search_list_for(30, 'rain')["3h"]).to be >= 0
+      end
+    end
   end
 
 end
