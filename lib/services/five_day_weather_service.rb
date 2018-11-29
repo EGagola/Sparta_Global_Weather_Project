@@ -26,18 +26,18 @@ class FiveDayService
 
   def search_inside_city_for(search_word)
   @five_day_forecast['city']["#{search_word}"]
-end
+  end
 
-def search_list_for(iterator, search_word)
-  @five_day_forecast['list'][iterator]["#{search_word}"]
-end
+  def search_list_for(iterator, search_word)
+    @five_day_forecast['list'][iterator]["#{search_word}"]
+  end
 
-def search_weather_for(iterator, search_word)
-  @five_day_forecast['list'][iterator]['weather'][0]["#{search_word}"]
-end
+  def search_weather_for(iterator, search_word)
+    @five_day_forecast['list'][iterator]['weather'][0]["#{search_word}"]
+  end
 
-def search_list_input_for(iterator, input, search_word)
-  @five_day_forecast['list'][iterator]["#{input}"]["#{search_word}"]
-end
+  def search_list_input_for(iterator, input, search_word)
+    @five_day_forecast['list'][iterator]["#{input}"]["#{search_word}"]
+  end
 
 end
