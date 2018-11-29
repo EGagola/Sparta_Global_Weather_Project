@@ -1,5 +1,8 @@
 require 'httparty'
 require 'json'
+require 'date'
+require_relative '../generators/coordinates_generator'
+
 
 class FiveDayService
   include HTTParty
@@ -36,4 +39,41 @@ class FiveDayService
     @five_day_forecast['list'][iterator]["#{input}"]["#{search_word}"]
   end
 
+  def delta_text_check(instance)
+    dt_text_input = instance.search_list_for(0, "dt_txt")
+    deltatime = instance.search_list_for(0, 'dt')
+    dt_text_input = DateTime.parse(dt_text_input).to_time.to_i
+    if dt_text_input == deltatime
+       true
+    else
+      false
+    end
+  end
+  def dt_txt_format_checker(instance)
+    true_values = 0
+    #true_values represents how many test cases are true and therefore correct.
+    # 4 cases are tested
+    dt_text_input = instance.search_list_for(0, "dt_txt")
+    dt_txt_array = dt_text_input.split(" ")
+    y, m, d = dt_txt_array[0].split '-'
+    dt_txt_time_array = dt_txt_array[1].split ':'
+    if (Date.valid_date? y.to_i, m.to_i, d.to_i)
+      #Date Check
+      true_values += 1
+    end
+    if (0 <= dt_txt_time_array[0].to_i && dt_txt_time_array[0].to_i <= 23)
+      true_values += 1
+      #Hours check
+    end
+    if (0 <= dt_txt_time_array[1].to_i && dt_txt_time_array[1].to_i <=59)
+      true_values += 1
+      #Minutes check
+    end
+    if (0 <= dt_txt_time_array[2].to_i && dt_txt_time_array[2].to_i <= 59)
+      true_values += 1
+      #Seconds Check
+    end
+    true_values
+    #expecting 4
+  end
 end
