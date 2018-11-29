@@ -8,7 +8,7 @@ class FiveDayService
     # placeholders for the generator functions
     @latitude = 35
     @longitude = 139
-    @five_day_forecast = 0
+    @five_day_forecast = {}
   end
 
   def get_five_day_data(api_key)
