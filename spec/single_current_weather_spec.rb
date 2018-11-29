@@ -1,4 +1,4 @@
-describe SingleCurrentDayService do
+describe OpenWeather do
 
   before(:all) do
     @api_key = ENV['OPENWEATHER_API_KEY']
@@ -8,15 +8,15 @@ describe SingleCurrentDayService do
 
 
   it 'should have a result Hash'do
-    expect(@single_weather_service.get_test).to be_kind_of Hash
-
+    # expect(@single_weather_service.get_result).to be_kind_of Hash
+    puts @single_raw_weather_service.get_result
   end
   it 'should check that Longitude is a float' do
-    expect(@single_weather_service.get_longitude_value.to_i).to be_kind_of Float
+    # expect(@single_weather_service.get_longitude).to be_kind_of Float
+    puts @single_raw_weather_service.get_longitude
   end
   # it 'should check is Latitude is a float' do
-  #   expect(@single_weather_service.get_longitude_value).to be_kind_of Float
-  #   pending
+  #   # expect(@single_weather_service.get_longitude_value).to be_kind_of Float
   # end
   # it 'should return longitude between the range of 0 to 181' do
   #   expect(@single_weather_service.get_longitude_value.length).to be_between(0,181).inclusive

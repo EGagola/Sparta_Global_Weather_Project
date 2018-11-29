@@ -6,7 +6,7 @@ require_relative 'services/sixteen_day_weather_service'
 class OpenWeather
 
   def single_weather_service
-    SingleCurrentDayService.new
+    CurrentDayService.new
   end
 
   def multiple_weather_service
