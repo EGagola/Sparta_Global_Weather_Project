@@ -3,6 +3,7 @@ require 'httparty'
 require 'dotenv'
 require_relative '../lib/open_weather'
 require_relative '../lib/generators/coordinates_generator'
+require_relative '../lib/generators/number_generator'
 
 Dotenv.load('.env')
 

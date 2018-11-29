@@ -1,6 +1,8 @@
 require_relative 'services/current_day_service'
 require_relative 'services/five_day_weather_service'
 require_relative 'services/current_day_coordinate_service'
+require_relative 'generators/coordinates_generator'
+
 
 class OpenWeather
 
@@ -14,5 +16,9 @@ class OpenWeather
 
   def current_day_service
     CurrentDayCoordinateService.new
+  end
+
+  def json_parse
+    ParseJSON.new
   end
 end
