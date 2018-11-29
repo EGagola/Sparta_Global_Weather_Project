@@ -6,8 +6,9 @@ class FiveDayService
 
   def initialize
     # placeholders for the generator functions
-    @latitude = 35
-    @longitude = 139
+    @json_file = ParseJSON.new
+    @latitude = @json_file.get_coord(100,'lat')
+    @longitude = @json_file.get_coord(,'lon')
     @five_day_forecast = {}
   end
 
