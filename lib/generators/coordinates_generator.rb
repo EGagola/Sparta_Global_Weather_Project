@@ -4,12 +4,16 @@ class ParseJSON
 
   attr_accessor :json_file
 
-  def initialize json_file
-    @json_file = JSON.parse(File.read(json_file))
+  def initialize
+    @json_file = JSON.parse(File.read('city.list.json'))
   end
 
-  def get_input number , input
-    puts @json_file[number]["#{input}"]
+  def get_json_length
+    @json_file.length
+  end
+
+  def generate_random_number
+    (rand * @json_file.length).floor
   end
 
   def get_coord number , direction
@@ -17,7 +21,3 @@ class ParseJSON
   end
 
 end
-#
-# newt = ParseJSON.new('../../city.list.json')
-# puts newt.get_coord(100,'lon')
-# puts newt.get_coord(100,'lat')

@@ -92,18 +92,18 @@ describe FiveDayService do
     end
 
     it "should have a pressure value in float format" do
-      expect(@five_day_service.search_list_input_for(3, 'main', 'pressure')).to be_kind_of(Float)
-      expect(@five_day_service.search_list_input_for(33, 'main', 'pressure')).to be_kind_of(Float)
+      expect(@five_day_service.search_list_input_for(3, 'main', 'pressure')).to be_kind_of(Float).or be_kind_of(Integer)
+      expect(@five_day_service.search_list_input_for(33, 'main', 'pressure')).to be_kind_of(Float).or be_kind_of(Integer)
     end
 
-    it "should have a sea level value in float format" do
-      expect(@five_day_service.search_list_input_for(3, 'main', 'sea_level')).to be_kind_of(Float)
-      expect(@five_day_service.search_list_input_for(33, 'main', 'sea_level')).to be_kind_of(Float)
+    it "should have a sea level value in float/int format" do
+      expect(@five_day_service.search_list_input_for(3, 'main', 'sea_level')).to be_kind_of(Float).or be_kind_of(Integer)
+      expect(@five_day_service.search_list_input_for(33, 'main', 'sea_level')).to be_kind_of(Float).or be_kind_of(Integer)
     end
 
-    it "should have a ground level value in float format" do
-      expect(@five_day_service.search_list_input_for(3, 'main', 'grnd_level')).to be_kind_of(Float)
-      expect(@five_day_service.search_list_input_for(33, 'main', 'grnd_level')).to be_kind_of(Float)
+    it "should have a ground level value in float/int format" do
+      expect(@five_day_service.search_list_input_for(3, 'main', 'grnd_level')).to be_kind_of(Float).or be_kind_of(Integer)
+      expect(@five_day_service.search_list_input_for(33, 'main', 'grnd_level')).to be_kind_of(Float).or be_kind_of(Integer)
     end
 
     it "should have a humidity value in integer format and between 1 and 100" do
