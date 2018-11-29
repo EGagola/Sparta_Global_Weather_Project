@@ -19,5 +19,5 @@ describe 'CoordsGenerator' do
   it "should return values for the latitude between -90 and 90" do
     expect(@cord.generate_latitude).to be_between(-90,90).inclusive
   end
-
+#Iterate Generator 3 times and ensure its not the same number
 end
