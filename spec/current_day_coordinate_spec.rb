@@ -62,7 +62,7 @@ describe CurrentDayCoordinateService do
   context 'testing rain if it appears' do
 
     it "should be between 0 and 100" do
-      if (@current_day_service.search_outer('rain') != nil)
+      if (@current_day_service.search_outer('rain') != nil and @current_day_service.search_outer('rain') != {})
         expect(@current_day_service.search_input_for('rain', '3h')).to be_between(0, 101).exclusive
       end
     end
@@ -112,7 +112,7 @@ describe CurrentDayCoordinateService do
 
   context 'testing coordinates' do
 
-    it "should contain 2 entires" do
+    it "should contain 2 entries" do
       expect(@current_day_service.search_outer('coord').length).to eq 2
     end
 
