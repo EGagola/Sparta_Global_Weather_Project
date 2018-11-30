@@ -12,6 +12,6 @@
 
 - CORRECTED wind speed and deg can be an integer
 
-- Current can have rain hash, not currently tested (according to website)()
+- CORRECTED Current can have rain hash, not currently tested (according to website)()
 
-- wind hash length 3 or 1 instead of 2
+- CORRECTED wind hash length 3 or 1 instead of 2
