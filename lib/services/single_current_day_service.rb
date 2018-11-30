@@ -6,7 +6,6 @@ class CurrentDayService
   include HTTParty
 
   def initialize
-<<<<<<< HEAD
     @single_weather_data = 0
   end
 
@@ -48,9 +47,6 @@ class CurrentDayService
 
   def get_country_value
     @single_weather_data['sys']['country']
-    # test id for id it should retun integer
-    #name should have type sting
-    #code should return an integer
   end
 
   def get_sys_id_value
@@ -109,13 +105,3 @@ class CurrentDayService
     @single_weather_data['main'].keys.length
   end
 end
-=======
-    @cityid = CityIdGenerator.new.single_generator
-    @single_weather_data = 0
-  end
-
-  def get_single_weather_id(api_key)
-    @single_weather_data = JSON.parse(self.class.get("https://api.openweathermap.org/data/2.5/group?id=#{@cityid}&APPID=#{api_key}").body)
-  end
-end
->>>>>>> ab23b1b344fcf47aa217e31f811ef3ec1d22dcac
