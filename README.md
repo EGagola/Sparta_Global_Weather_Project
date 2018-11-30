@@ -41,7 +41,7 @@ The search_list_input_for method drills down one level further into the list has
 The Date and time at which data is collected is retrieved and stored within two values. These are the dt (delta time) and dt_txt (delta time text). These values are converted and compared through the dt_txt_format_checker method. Each value which is correct is considered true. The amount of times this happens is stored inside the variable true_values. As four values are tested, true_values is expected to be 4 if the data is correct.
 
 ### The Tests
-Currently, testing every feature of the hash returned from the API, to varying extents. JSON files are converted into Hash's to apply Rspec Test. Test verify that inputs are stored in the correct class and format. Separate files containing test blocks were used to test each API. Descriptions of the aim for test blocks were defined within the context. Before test, variables were intialiazed to access data within the different services.
+Currently testing every feature of the hash returned from the API, to varying extents. JSON files are converted into Hashes to apply the Rspec Test. Tests verify that inputs are stored in the correct class and format. Separate files containing test blocks were used to test each API. Descriptions of the aim for test blocks were defined within the context. Before test, variables were intialiazed to access data within the different services.
 
 ## Current Day Coordinate Service
 
