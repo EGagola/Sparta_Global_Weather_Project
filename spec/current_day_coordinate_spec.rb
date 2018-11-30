@@ -44,7 +44,7 @@ describe CurrentDayCoordinateService do
 
     it "should be a Hash of length 1-3" do
       expect(@current_day_service.search_outer('wind')).to be_kind_of Hash
-      expect(@current_day_service.search_outer('wind').length).to be_between(1,2).inclusive
+      expect(@current_day_service.search_outer('wind').length).to be_between(1,3).inclusive
     end
 
     it "should have a speeed element that is a positive number inside of wind" do
