@@ -50,4 +50,60 @@ describe OpenWeather do
   it 'should have icon in weather to be a string'do
     expect(@single_weather_service.get_icon_value).to be_kind_of String
   end
+  
+  it 'should have a result Hash' do
+    expect(@single_weather_service.get_result).to be_kind_of(Hash)
+   end
+ 
+  it "should return temperature of float" do
+    expect(@single_weather_service.get_temperature).to be_kind_of Float
+  end
+ 
+  it "should return a code of 200 status" do
+    expect(@single_weather_service.get_status_code).to eq 200
+  end
+ 
+  it "should return a pressure of float" do
+    expect(@single_weather_service.get_pressure).to be_kind_of Float
+  end
+ 
+  it "should return a humidity of integer " do
+    expect(@single_weather_service.get_humidity).to be_kind_of Integer
+  end
+ 
+  it "should return a temp min of float " do
+    expect(@single_weather_service.get_temperature_minimum).to be_kind_of Float
+  end
+ 
+  it "should return a temp max of float" do
+    expect(@single_weather_service.get_temperature_maximum).to be_kind_of Float
+  end
+ 
+  it 'should check the visibility is a integer'do
+    expect(@single_weather_service.get_visibility).to be_kind_of Integer
+  end
+ 
+  it "should return a wind of hash" do
+    expect(@single_weather_service.get_wind).to be_kind_of Hash
+  end
+ 
+  it "should return wind speed of float time" do
+    expect(@single_weather_service.get_wind_speed).to be_kind_of Float
+  end
+ 
+  it "should return a cloud of hash" do
+    expect(@single_weather_service.get_cloud).to be_kind_of Hash
+  end
+ 
+  it "should return all clouds of float" do
+    expect(@single_weather_service.get_all_clouds).to be_kind_of Float
+  end
+ 
+  it "should return a dt of float" do
+    expect(@single_weather_service.get_dt).to be_kind_of Float
+  end
+ 
+  it "should return a system of hash" do
+    expect(@single_weather_service.get_system).to be_kind_of Hash
+  end
 end
