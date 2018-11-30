@@ -61,11 +61,11 @@ describe CurrentDayCoordinateService do
 
   context 'testing rain if it appears' do
 
-    it "should be between 0 and 100" do
+    it "should be a number between 0 and 100" do
       if (@current_day_service.search_outer('rain') != nil and @current_day_service.search_outer('rain') != {})
         expect(@current_day_service.search_input_for('rain', '3h')).to be_between(0, 101).exclusive
       end
-      
+
     end
 
   end

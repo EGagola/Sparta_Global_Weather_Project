@@ -159,9 +159,9 @@ describe FiveDayService do
       end
     end
 
-    it 'should return a value as a float greater than zero if rain is not empty' do
+    it 'should return a value as a number greater than zero if rain is not empty' do
       if (@five_day_service.search_list_for(@two_positions[0],'rain') != nil) && (@five_day_service.search_list_for(@two_positions[0],'rain') != {})
-        expect(@five_day_service.search_list_for(@two_positions[0], 'rain')["3h"]).to be_kind_of(Float)
+        expect(@five_day_service.search_list_for(@two_positions[0], 'rain')["3h"]).to be_kind_of(Float).or be_kind_of(Integer)
         expect(@five_day_service.search_list_for(@two_positions[0], 'rain')["3h"]).to be >= 0
       end
     end
