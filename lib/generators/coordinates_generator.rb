@@ -1,28 +1,23 @@
-class CoordsGenerator
+require 'json'
 
-  def generate_latitude
-    long = rand(-90.0...90.0).round(1)
+class ParseJSON
+
+  attr_accessor :json_file
+
+  def initialize
+    @json_file = JSON.parse(File.read('city.list.json'))
   end
 
-  def generate_longitude
-    lat = rand(-180.0...180.0).round(1)
+  def get_json_length
+    @json_file.length
   end
 
-  def generate_number
-    rand(0...39)
+  def generate_random_number
+    (rand * @json_file.length).floor
   end
 
-  def compare_two_different_numbers
-    different = false
-    while(different == false) do
-      two_numbers = [0, 0]
-      two_numbers[0] = generate_number
-      two_numbers[1] = generate_number
-      if two_numbers[0]!=two_numbers[1]
-        different = true
-      end
-    end
-    two_numbers
+  def get_coord number , direction
+    @json_file[number]['coord']["#{direction}"]
   end
 
 end

@@ -3,15 +3,14 @@ require 'json'
 require 'date'
 require_relative '../generators/coordinates_generator'
 
-
 class FiveDayService
   include HTTParty
 
   def initialize
-    # placeholders for the generator functions
-    @coordinates = CoordsGenerator.new
-    @latitude = @coordinates.generate_latitude
-    @longitude = @coordinates.generate_longitude
+    @json_file = ParseJSON.new
+    random_val = @json_file.generate_random_number
+    @latitude = @json_file.get_coord(random_val,'lat')
+    @longitude = @json_file.get_coord(random_val,'lon')
     @five_day_forecast = {}
   end
 
@@ -49,6 +48,7 @@ class FiveDayService
       false
     end
   end
+
   def dt_txt_format_checker(instance)
     true_values = 0
     #true_values represents how many test cases are true and therefore correct.
