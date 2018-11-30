@@ -74,11 +74,7 @@ class CurrentDayService
   end
 
   def get_main_value
-    @single_weather_data['weather'][0]['main']
-  end
-
-  def get_description_value
-    @single_weather_data['weather'][0]['description']
+    @single_weather_data['list']['0']['weather'][0]['main']
   end
 
   def get_icon_value
@@ -103,5 +99,9 @@ class CurrentDayService
 
   def get_main_key_value
     @single_weather_data['main'].keys.length
+  end
+ 
+  def get_weather_value
+    @single_weather_data['weather'][0].keys.length
   end
 end
