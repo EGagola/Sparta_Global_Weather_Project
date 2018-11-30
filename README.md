@@ -34,7 +34,7 @@ The search_inside_city_for method works the same, but will instead look inside t
 
 The search_list_for method is slightly different, as it takes two parameters. The list hash contains 40 datasets, so the first parameter must be an integer to choose which of these to look at. The second parameter is for the desired key.
 
-The search_weather_for method works this same as list, but for the weather hash.
+The search_weather_for method works the same as list, but for the weather hash.
 
 The search_list_input_for method drills down one level further into the list hash. It takes three arguments in the following order: integer, desired hash key, and the key to search for. It otherwise functions the same as above.
 
@@ -48,4 +48,10 @@ Currently testing every feature of the hash returned from the API, to varying ex
 
 This service is an alternative to the Current Day service, searching for cities instead by coordinates. The methods are similar to the Five Day service methods, but as its will only return one set of data the integer selector is removed.
 
-The get_current_day_data method uses your API key and generated coordinates to make an http request to the API. It then returns the body of the response.
+The get_current_day_data method uses your API key and selected coordinates to make an http request to the API. It then returns the body of the response.
+
+The body of the response will be an hash containing many different data types, resulting in a structure with many layers. The search_outer method takes one parameter, and looks through the base hash for a key matching the parameter.
+
+The search_weather_for method works this same as this, but drills down another level to look inside the weather hash instead.
+
+The search_input_for can be used to drill down and search through all other hashes contained in the response. It uses 2 parameters in the following order: desired hash and search key. For example, to search for the 'temp' entry in the 'main' hash, use ".search_input_for('main', 'temp')"
