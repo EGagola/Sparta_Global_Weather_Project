@@ -15,7 +15,6 @@ describe OpenWeather do
 
   it 'should have a result Hash' do
     expect(@single_weather_service.get_result).to be_kind_of(Hash)
-    puts @single_weather_service.get_result
    end
 
   it 'check clouds id to be length 7'do
