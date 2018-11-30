@@ -1,0 +1,17 @@
+- CORRECTED In some countries & seasons the sun will never rise or fail, getting time of 0 goes against test (Expected outcome)
+
+- CORRECTED If not on land (or if europe?) there is no country - sys hash length 4=>3, country returns nil, id returns 0. (Expected outcome)
+
+- CORRECTED Sometimes outer hash returns an extra field, not known why. Now known to be visibility (INVESTIGATION REQUIRED)
+
+- CORRECTED pressure, longitude, and latitude ground level and sea level can be integers rather than floats. (FIX REQUIRED)
+
+- NO LONGER RELEVANT longitude, and latitude can be integers rather than floats. (FIX REQUIRED)
+
+- CORRECTED Sometimes sys hash has 6 entries rather than expected 4 (INVESTIGATION REQUIRED)
+
+- CORRECTED wind speed and deg can be an integer
+
+- Current can have rain hash, not currently tested (according to website)()
+
+- wind hash length 3 or 1 instead of 2
