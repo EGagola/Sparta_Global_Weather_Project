@@ -26,6 +26,10 @@ class FiveDayService
     @five_day_forecast['city']["#{search_word}"]
   end
 
+  def search_coordinates coord_type
+    @five_day_forecast['city']['coord']["#{coord_type}"]
+  end
+
   def search_list_for(iterator, search_word)
     @five_day_forecast['list'][iterator]["#{search_word}"]
   end

@@ -153,13 +153,13 @@ describe FiveDayService do
       end
     end
 
-    it 'should return key as string if rain it is not empty' do
+    it 'should return a key as a string if rain is not empty' do
       if (@five_day_service.search_list_for(@two_positions[0],'rain') != nil) && (@five_day_service.search_list_for(@two_positions[0],'rain') != {})
         expect(@five_day_service.search_list_for(@two_positions[0], 'rain').keys[0]).to be_kind_of(String)
       end
     end
 
-    it 'should return value as a float greater than zero if rain it is not empty' do
+    it 'should return a value as a float greater than zero if rain is not empty' do
       if (@five_day_service.search_list_for(@two_positions[0],'rain') != nil) && (@five_day_service.search_list_for(@two_positions[0],'rain') != {})
         expect(@five_day_service.search_list_for(@two_positions[0], 'rain')["3h"]).to be_kind_of(Float)
         expect(@five_day_service.search_list_for(@two_positions[0], 'rain')["3h"]).to be >= 0
@@ -167,9 +167,9 @@ describe FiveDayService do
     end
   end
 
-    context 'testing time, rain and wind values inside of list' do
+    context 'Testing time and wind values inside of list' do
 
-    it "should have a wind data in a hash" do
+    it "should have wind data in a hash format" do
       expect(@five_day_service.search_list_for(@two_positions[0], 'wind')).to be_kind_of Hash
     end
 
@@ -185,7 +185,7 @@ describe FiveDayService do
       expect(@five_day_service.search_list_input_for(@two_positions[0], "wind", "deg")).to be_between(0,360).inclusive
     end
 
-    it "delta time should be an Integer" do
+    it "should have delta time to be an Integer" do
       expect(@five_day_service.search_list_for(@two_positions[0], 'dt')).to be_kind_of Integer
     end
 
@@ -207,5 +207,52 @@ describe FiveDayService do
       expect(@five_day_service.search_list_for(6, 'dt') - 10800).to eq (@five_day_service.search_list_for(5, 'dt'))
       expect(@five_day_service.search_list_for(39, 'dt') - 10800).to eq (@five_day_service.search_list_for(38, 'dt'))
     end
+
   end
+
+  context "testing the city hash" do
+
+    it "should be a hash of length 4 or 5" do
+      expect(@five_day_service.search_outer('city')).to be_kind_of Hash
+      expect(@five_day_service.search_outer('city').length).to eq(4).or eq(5)
+    end
+
+    it "should have an id value that is an integer greater than 0" do
+      expect(@five_day_service.search_inside_city_for('id')).to be_kind_of Integer
+      expect(@five_day_service.search_inside_city_for('id')).to be > 0
+    end
+
+    it "should have a name value of type string" do
+      expect(@five_day_service.search_inside_city_for('name')).to be_kind_of String
+    end
+
+    it "should contain a coords hash with two elements" do
+      expect(@five_day_service.search_inside_city_for('coord')).to be_kind_of Hash
+      expect(@five_day_service.search_inside_city_for('coord').length).to eq 2
+    end
+
+    it "should have a latitude value of between -90 and 90" do
+      expect(@five_day_service.search_coordinates('lat')).to be_kind_of(Float).or be_kind_of(Integer)
+      expect(@five_day_service.search_coordinates('lat')).to be_between(-90,90).inclusive
+    end
+
+    it "should have a longitude value of between -180 and 180" do
+      expect(@five_day_service.search_coordinates('lon')).to be_kind_of(Float).or be_kind_of(Integer)
+      expect(@five_day_service.search_coordinates('lon')).to be_between(-180,180).inclusive
+    end
+
+    it "should have a country value of type string" do
+      expect(@five_day_service.search_inside_city_for('country')).to be_kind_of String
+    end
+
+    it "should have a population value of integer if it is present" do
+      if (@five_day_service.search_inside_city_for('population') != nil)
+        expect(@five_day_service.search_inside_city_for('population')).to be_kind_of(Integer)
+        expect(@five_day_service.search_inside_city_for('population')).to be > 0
+      end
+
+    end
+
+  end
+
 end
