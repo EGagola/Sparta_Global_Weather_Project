@@ -98,9 +98,9 @@ describe CurrentDayCoordinateService do
       expect(@current_day_service.search_input_for('sys','country')).to be_kind_of(String).or be(nil)
     end
 
-    it "should contain an int value for sunrise that is greater than dt minus one day or be 0" do
+    it "should contain an int value for sunrise that is greater than dt minus two days or be 0" do
       expect(@current_day_service.search_input_for('sys','sunrise')).to be_kind_of Integer
-      expect(@current_day_service.search_input_for('sys','sunrise')).to  eq(0).or be > (@current_day_service.search_outer('dt') - 86400)
+      expect(@current_day_service.search_input_for('sys','sunrise')).to  eq(0).or be > (@current_day_service.search_outer('dt') - (2*86400))
     end
 
     it "should contain an int value for sunset that is greater than sunrise or 0" do
@@ -121,7 +121,7 @@ describe CurrentDayCoordinateService do
       expect(@current_day_service.search_input_for('coord', 'lon')).to be_between((@current_day_service.longitude - 0.1), (@current_day_service.longitude + 0.1)).inclusive
     end
 
-    it "shoud have a longitude value as float and between equal to the current longitude" do
+    it "shoud have a latitude value as float and between equal to the current latitude" do
       expect(@current_day_service.search_input_for('coord', 'lat')).to be_kind_of(Float).or be_kind_of(Integer)
       expect(@current_day_service.search_input_for('coord', 'lat')).to be_between((@current_day_service.latitude - 0.1), (@current_day_service.latitude + 0.1)).inclusive
     end
@@ -130,9 +130,9 @@ describe CurrentDayCoordinateService do
 
   context 'testing weather' do
 
-    it "should be an array containing one hash" do
+    it "should be an array containing at least one hash" do
       expect(@current_day_service.search_outer('weather')).to be_kind_of(Array)
-      expect(@current_day_service.search_outer('weather').length).to eq 1
+      expect(@current_day_service.search_outer('weather').length).to be >= 1
       expect(@current_day_service.search_outer('weather')[0]).to be_kind_of(Hash)
     end
 

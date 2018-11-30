@@ -114,9 +114,9 @@ describe FiveDayService do
       expect(@five_day_service.search_list_input_for(@two_positions[1], 'main', 'humidity')).to be_between(0,100).inclusive
     end
 
-    it "should have a temp_kf value in integer format" do
-      expect(@five_day_service.search_list_input_for(@two_positions[0], 'main', 'temp_kf')).to be_kind_of(Integer)
-      expect(@five_day_service.search_list_input_for(@two_positions[1], 'main', 'temp_kf')).to be_kind_of(Integer)
+    it "should have a temp_kf value in a numerical format" do
+      expect(@five_day_service.search_list_input_for(@two_positions[0], 'main', 'temp_kf')).to be_kind_of(Integer).or be_kind_of(Float)
+      expect(@five_day_service.search_list_input_for(@two_positions[1], 'main', 'temp_kf')).to be_kind_of(Integer).or be_kind_of(Float)
     end
   end
 
