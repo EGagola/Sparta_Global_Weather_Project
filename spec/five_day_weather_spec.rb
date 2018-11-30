@@ -10,7 +10,7 @@ describe FiveDayService do
     @two_positions =  OpenWeather.new.number_generator.generate_two_different_numbers
   end
 
-  context "Testing outer section of FiveDayService" do
+  context "Testing outer" do
 
     it "should be a hash" do
       expect(@five_day_service.get_five_day_data(@api_key)).to be_kind_of Hash
@@ -36,7 +36,7 @@ describe FiveDayService do
 
   context "Testing the weather array" do
 
-    it "should contain a weather array" do
+    it "should be an array" do
       expect(@five_day_service.search_list_for(@two_positions[0],'weather')).to be_kind_of Array
     end
 
@@ -92,17 +92,17 @@ describe FiveDayService do
       expect(@five_day_service.search_list_input_for(@two_positions[1], 'main', 'temp_max')).to be_between(173, 373).inclusive
     end
 
-    it "should have a pressure value in float format" do
+    it "should have a pressure value in number format" do
       expect(@five_day_service.search_list_input_for(@two_positions[0], 'main', 'pressure')).to be_kind_of(Float).or be_kind_of(Integer)
       expect(@five_day_service.search_list_input_for(@two_positions[1], 'main', 'pressure')).to be_kind_of(Float).or be_kind_of(Integer)
     end
 
-    it "should have a sea level value in float/int format" do
+    it "should have a sea level value in number format" do
       expect(@five_day_service.search_list_input_for(@two_positions[0], 'main', 'sea_level')).to be_kind_of(Float).or be_kind_of(Integer)
       expect(@five_day_service.search_list_input_for(@two_positions[1], 'main', 'sea_level')).to be_kind_of(Float).or be_kind_of(Integer)
     end
 
-    it "should have a ground level value in float/int format" do
+    it "should have a ground level value in number format" do
       expect(@five_day_service.search_list_input_for(@two_positions[0], 'main', 'grnd_level')).to be_kind_of(Float).or be_kind_of(Integer)
       expect(@five_day_service.search_list_input_for(@two_positions[1], 'main', 'grnd_level')).to be_kind_of(Float).or be_kind_of(Integer)
     end
@@ -114,7 +114,7 @@ describe FiveDayService do
       expect(@five_day_service.search_list_input_for(@two_positions[1], 'main', 'humidity')).to be_between(0,100).inclusive
     end
 
-    it "should have a temp_kf value in a numerical format" do
+    it "should have a temp_kf value in a number format" do
       expect(@five_day_service.search_list_input_for(@two_positions[0], 'main', 'temp_kf')).to be_kind_of(Integer).or be_kind_of(Float)
       expect(@five_day_service.search_list_input_for(@two_positions[1], 'main', 'temp_kf')).to be_kind_of(Integer).or be_kind_of(Float)
     end
@@ -145,7 +145,7 @@ describe FiveDayService do
     end
   end
 
-  context 'Testing rain inside list' do
+  context 'Testing rain inside list if present' do
 
     it 'should return as a hash' do
       if @five_day_service.search_list_for(@two_positions[0],'rain')!= nil
@@ -177,7 +177,7 @@ describe FiveDayService do
       expect(@five_day_service.search_list_for(@two_positions[0], 'wind').length).to eq 2
     end
 
-    it "should have a wind speed as a float or integer" do
+    it "should have a wind speed as a number" do
       expect(@five_day_service.search_list_input_for(@two_positions[0], "wind", "speed")).to be_kind_of(Float).or be_kind_of(Integer)
     end
 
@@ -189,7 +189,7 @@ describe FiveDayService do
       expect(@five_day_service.search_list_for(@two_positions[0], 'dt')).to be_kind_of Integer
     end
 
-    it "should have data within a 5 day timescale" do
+    it "should have data at the last entry be five days after the first entry" do
       expect(@five_day_service.search_list_for(39, 'dt') - 421200).to eq (@five_day_service.search_list_for(0, 'dt'))
     end
 
