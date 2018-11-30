@@ -1,8 +1,5 @@
-class NumberGenerator
 
-  def initialize
-    @number = 0
-  end
+class NumberGenerator
 
   def random
     (rand * 40).floor

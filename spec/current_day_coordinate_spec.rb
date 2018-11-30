@@ -43,6 +43,7 @@ describe CurrentDayCoordinateService do
   context "testing wind" do
 
     it "should be a Hash of length 1-3" do
+      puts @current_day_service.get_current_day_data(@api_key)
       expect(@current_day_service.search_outer('wind')).to be_kind_of Hash
       expect(@current_day_service.search_outer('wind').length).to be_between(1,2).inclusive
     end
@@ -62,7 +63,7 @@ describe CurrentDayCoordinateService do
   context 'testing rain if it appears' do
 
     it "should be between 0 and 100" do
-      if (@current_day_service.search_outer('rain') != nil)
+      if (@current_day_service.search_outer('rain') != nil or @current_day_service.search_outer('rain') != {})
         expect(@current_day_service.search_input_for('rain', '3h')).to be_between(0, 101).exclusive
       end
     end
@@ -112,7 +113,7 @@ describe CurrentDayCoordinateService do
 
   context 'testing coordinates' do
 
-    it "should contain 2 entires" do
+    it "should contain 2 entries" do
       expect(@current_day_service.search_outer('coord').length).to eq 2
     end
 
@@ -121,7 +122,7 @@ describe CurrentDayCoordinateService do
       expect(@current_day_service.search_input_for('coord', 'lon')).to be_between((@current_day_service.longitude - 0.1), (@current_day_service.longitude + 0.1)).inclusive
     end
 
-    it "shoud have a longitude value as float and between equal to the current longitude" do
+    it "shoud have a latitude value as float and between equal to the current latitude" do
       expect(@current_day_service.search_input_for('coord', 'lat')).to be_kind_of(Float).or be_kind_of(Integer)
       expect(@current_day_service.search_input_for('coord', 'lat')).to be_between((@current_day_service.latitude - 0.1), (@current_day_service.latitude + 0.1)).inclusive
     end
