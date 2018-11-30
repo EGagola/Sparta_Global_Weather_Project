@@ -153,13 +153,13 @@ describe FiveDayService do
       end
     end
 
-    it 'should return key as string if rain it is not empty' do
+    it 'should return a key as a string if rain is not empty' do
       if (@five_day_service.search_list_for(@two_positions[0],'rain') != nil) && (@five_day_service.search_list_for(@two_positions[0],'rain') != {})
         expect(@five_day_service.search_list_for(@two_positions[0], 'rain').keys[0]).to be_kind_of(String)
       end
     end
 
-    it 'should return value as a float greater than zero if rain it is not empty' do
+    it 'should return a value as a float greater than zero if rain is not empty' do
       if (@five_day_service.search_list_for(@two_positions[0],'rain') != nil) && (@five_day_service.search_list_for(@two_positions[0],'rain') != {})
         expect(@five_day_service.search_list_for(@two_positions[0], 'rain')["3h"]).to be_kind_of(Float)
         expect(@five_day_service.search_list_for(@two_positions[0], 'rain')["3h"]).to be >= 0
@@ -167,9 +167,9 @@ describe FiveDayService do
     end
   end
 
-    context 'testing time, rain and wind values inside of list' do
+    context 'Testing time and wind values inside of list' do
 
-    it "should have a wind data in a hash" do
+    it "should have wind data in a hash format" do
       expect(@five_day_service.search_list_for(@two_positions[0], 'wind')).to be_kind_of Hash
     end
 
@@ -185,7 +185,7 @@ describe FiveDayService do
       expect(@five_day_service.search_list_input_for(@two_positions[0], "wind", "deg")).to be_between(0,360).inclusive
     end
 
-    it "delta time should be an Integer" do
+    it "should have delta time to be an Integer" do
       expect(@five_day_service.search_list_for(@two_positions[0], 'dt')).to be_kind_of Integer
     end
 
