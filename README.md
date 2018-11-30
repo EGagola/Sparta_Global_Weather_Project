@@ -12,17 +12,15 @@ Then simply run 'rspec' to run the test.
 
 ## Current Day Service
 
-
-
-
+The Current Day Service is currently unimplemented, but will use a city id to search for the current weather.
 
 ## Five Day Service
 
-This portion checks the results from calling the Open Weather API for a 5 day forecast, in three hour increments. It will provide a new, randomly generated set of coordinates to the API each time the test is run. These coordinates are generated in the coordinates_generator.rb file.
+This portion checks the results from calling the Open Weather API for a 5 day forecast, in three hour increments. It will provide a new, randomly selected set of coordinates (taken from the city list json file) to the API each time the test is run. These coordinates are generated in the coordinates_generator.rb file.
 
 ### The coordinates generator
 
-This file is used in the test to generate random coordinates through a set of two methods: generate_latitude and generate_longitude, respectively. This generator is tested in turn through the coordinates_generator_spec file. Specifically, it must generate floats that are valid coordinates.
+This file is used in the test to select random coordinates from the city list through a set of two methods: generate_random_number and get_coord.
 
 ### The Service
 
@@ -46,6 +44,8 @@ The Date and time at which data is collected is retrieved and stored within two 
 
 Currently testing every feature of the hash returned from the API, to varying extents.
 
+## Current Day Coordinate Service
 
+This service is an alternative to the Current Day service, searching for cities instead by coordinates. The methods are similar to the Five Day service methods, but as its will only return one set of data the integer selector is removed.
 
-## Sixteen Day Service
+The get_current_day_data method uses your API key and generated coordinates to make an http request to the API. It then returns the body of the response.
