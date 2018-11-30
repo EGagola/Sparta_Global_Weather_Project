@@ -63,9 +63,8 @@ describe CurrentDayCoordinateService do
 
     it "should be a number between 0 and 100" do
       if (@current_day_service.search_outer('rain') != nil and @current_day_service.search_outer('rain') != {})
-        expect(@current_day_service.search_input_for('rain', '3h')).to be_between(0, 101).exclusive
+        expect(@current_day_service.search_outer('rain').length).to eq 1
       end
-
     end
 
   end
