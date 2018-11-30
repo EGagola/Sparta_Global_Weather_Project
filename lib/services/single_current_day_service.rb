@@ -6,12 +6,15 @@ class CurrentDayService
   include HTTParty
 
   def initialize
-    @cityid = CityIdGenerator.new.single_generator
     @single_weather_data = 0
   end
 
-  def get_single_weather_id(api_key)
-    @single_weather_data = JSON.parse(self.class.get("https://api.openweathermap.org/data/2.5/group?id=#{@cityid}&APPID=#{api_key}").body)
+  def get_single_weather_id(cityid, api_key)
+    @single_weather_data = JSON.parse(self.class.get("https://api.openweathermap.org/data/2.5/group?id=#{cityid}&APPID=#{api_key}").body)
+  end
+
+  def get_id
+    @single_weather_data['list'][0]['id'].to_s.split ''
   end
 
   def get_result
@@ -44,6 +47,9 @@ class CurrentDayService
 
   def get_country_value
     @single_weather_data['sys']['country']
+    # test id for id it should retun integer
+    #name should have type sting
+    #code should return an integer
   end
 
   def get_sys_id_value
@@ -55,11 +61,19 @@ class CurrentDayService
   end
 
   def get_latitude_value
-    @single_weather_data['coord']['lat']
+    @single_weather_data['list'][0]['coord']['lat']
   end
 
-  def get_id_value
-    @single_weather_data['weather'][0]['id']
+  def get_weather_id
+    @single_weather_data['list'][0]['weather'][0]['id']
+  end
+
+  def get_weather_id_count
+    @single_weather_data['list'][0]['weather'][0]['id'].to_s.split ''
+  end
+
+  def get_weather
+    @single_weather_data['list'][0]['weather'].keys.length
   end
 
   def get_main_value
@@ -71,11 +85,19 @@ class CurrentDayService
   end
 
   def get_icon_value
-    @single_weather_data['weather'][0]['icon']
+    @single_weather_data['list'][0]['weather'][0]['icon']
   end
 
-  def get_weather_value
-    @single_weather_data['weather'][0].keys.length
+  def get_description_value
+    @single_weather_data['list'][0]['weather'][0]['description']
+  end
+
+  def get_description_value_count
+    @single_weather_data['list'][0]['weather'][0]['description'].split('')
+  end
+
+  def get_weather_length
+    @single_weather_data['list'][0]['weather'][0].keys.length
   end
 
   def get_coordinates_key_value
